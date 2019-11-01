@@ -7,14 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 
 import com.mhmdreza.azmoonyar.R
-import com.mhmdreza.azmoonyar.base.BaseFragment
 
 /**
  * A simple [Fragment] subclass.
  */
-class SplashFragment : BaseFragment() {
+class SplashFragment : Fragment() {
+
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +27,15 @@ class SplashFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+    }
+
     override fun onResume() {
         super.onResume()
-        Handler().postDelayed({ mainActivity.startFragment(MainFragment()) }, 3000)
+        Handler().postDelayed({
+            navController.navigate(R.id.action_splashFragment_to_mainFragment)
+        }, 3000)
     }
 }
