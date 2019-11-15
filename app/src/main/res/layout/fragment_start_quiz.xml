@@ -1,42 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".views.StartQuizFragment">
 
-    <androidx.appcompat.widget.Toolbar
+    <FrameLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/toolbar"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp">
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="4dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_right_back" />
+
         <TextView
-            android:id="@+id/quizDescription"
+            android:id="@+id/toolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:textSize="20sp"
-            android:text="یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب "
-            android:layout_marginEnd="16dp"/>
-    </ScrollView>
+            android:layout_gravity="center"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/app_name"
+            android:textColor="@android:color/black" />
 
-    <View
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/gradient_background"
-        android:layout_height="60dp"/>
 
-    <TextView
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom"
-        android:textSize="22sp"
-        android:textColor="@android:color/white"
-        android:text="@string/startQuiz"
-        android:gravity="center"
-        android:background="@drawable/start_quiz_background"/>
-</FrameLayout>
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp">
+
+            <TextView
+                android:id="@+id/quizDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب "
+                android:textSize="20sp" />
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/gradient_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/start_quiz_background"
+            android:gravity="center"
+            android:text="@string/startQuiz"
+            android:textColor="@android:color/white"
+            android:textSize="22sp" />
+
+    </FrameLayout>
+
+</LinearLayout>

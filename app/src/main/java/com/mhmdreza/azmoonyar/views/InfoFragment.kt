@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation.findNavController
 import com.mhmdreza.azmoonyar.R
 import kotlinx.android.synthetic.main.fragment_info.*
 
 class InfoFragment : Fragment() {
+
+    private val navController by lazy { findNavController(view!!) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,8 +25,8 @@ class InfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        toolbar.title = "درباره آزمون یار"
+        backIcon.setOnClickListener{  navController.popBackStack(R.id.mainFragment, false)
+        }
     }
 
 

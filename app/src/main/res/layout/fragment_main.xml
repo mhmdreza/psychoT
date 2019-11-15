@@ -6,10 +6,40 @@
     android:orientation="vertical"
     tools:context=".views.MainFragment">
 
-    <androidx.appcompat.widget.Toolbar
+    <FrameLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:background="@android:color/transparent"
+        android:layout_height="@dimen/toolbar_height" >
+
+        <ImageView
+            android:id="@+id/infoButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_info"
+            android:layout_gravity="center_vertical|start"/>
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+
+
+    </FrameLayout>
+
 
     <TextView
         android:id="@+id/infoTextView"
@@ -18,10 +48,13 @@
         android:layout_gravity="center"
         android:background="@drawable/info_background"
         android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
         android:lineSpacingExtra="4dp"
         android:paddingLeft="32dp"
         android:paddingTop="16dp"
         android:paddingRight="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:paddingBottom="16dp"
         android:text="@string/main_description"
         android:textSize="16sp" />

@@ -2,7 +2,20 @@
 <resources>
     <color name="colorPrimary">#7F1DFE</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#7F1DFE</color>
     <color name="info_background">#F3F6FB</color>
     <color name="result_background">#4970CD</color>
+    <color name="purple_1">#B983FF</color>
+    <color name="purple_2">#AA6BFF</color>
+    <color name="purple_3">#9E52FD</color>
+    <color name="purple_4">#9138FF</color>
+    <color name="purple_5">#8020FE</color>
+    <color name="tradeoff_1">#B37AFF</color>
+    <color name="tradeoff_2">#AE6FF8</color>
+    <color name="tradeoff_3">#A05DFF</color>
+    <color name="tradeoff_4">#9F4EFF</color>
+    <color name="tradeoff_5">#9144F4</color>
+    <color name="tradeoff_6">#8D35FB</color>
+    <color name="tradeoff_7">#8A20FF</color>
+    <color name="purple_stroke">#4B3677</color>
 </resources>

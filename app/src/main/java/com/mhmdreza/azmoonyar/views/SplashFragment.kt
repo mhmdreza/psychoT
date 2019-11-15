@@ -17,7 +17,7 @@ import com.mhmdreza.azmoonyar.R
  */
 class SplashFragment : Fragment() {
 
-    private lateinit var navController: NavController
+    private val navController by lazy { Navigation.findNavController(view!!) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,15 +27,10 @@ class SplashFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
-    }
-
     override fun onResume() {
         super.onResume()
         Handler().postDelayed({
             navController.navigate(R.id.action_splashFragment_to_mainFragment)
-        }, 3000)
+        }, 2000)
     }
 }

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/questionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center_horizontal"
+        android:lines="3"
+        android:text="وقتی کودکم بدرفتاری می کند..."
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center_horizontal"-->
+    <!--        android:orientation="horizontal">-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/mother"-->
+    <!--            android:layout_width="150dp"-->
+    <!--            android:layout_height="@dimen/answer_height"-->
+    <!--            android:background="@drawable/answer_bg5"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/mother"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/fother"-->
+    <!--            android:layout_width="150dp"-->
+    <!--            android:layout_height="@dimen/answer_height"-->
+    <!--            android:background="@drawable/answer_bg1"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/father"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--    </LinearLayout>-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center_horizontal"-->
+    <!--        android:layout_marginTop="32dp"-->
+    <!--        android:orientation="horizontal">-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/five"-->
+    <!--            android:layout_width="64dp"-->
+    <!--            android:layout_height="@dimen/answer_height"-->
+    <!--            android:background="@drawable/answer_bg5"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/five"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/four"-->
+    <!--            android:layout_width="64dp"-->
+    <!--            android:layout_height="@dimen/answer_height"-->
+    <!--            android:background="@drawable/answer_bg4"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/four"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/three"-->
+    <!--            android:layout_width="64dp"-->
+    <!--            android:layout_height="@dimen/answer_height"-->
+    <!--            android:background="@drawable/answer_bg3"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/three"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/two"-->
+    <!--            android:layout_width="64dp"-->
+    <!--            android:layout_height="@dimen/answer_height"-->
+    <!--            android:background="@drawable/answer_bg2"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/two"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/one"-->
+    <!--            android:layout_width="64dp"-->
+    <!--            android:layout_height="@dimen/answer_height"-->
+    <!--            android:background="@drawable/answer_bg1"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/one"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/parent_opt_bg1">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@drawable/parent_num_bg1"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="72dp"
+                android:gravity="center"
+                android:text="کاملا نادرست"
+                android:textColor="@color/tradeoff_1"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/parent_opt_bg2">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@drawable/parent_num_bg2"
+                android:gravity="center"
+                android:text="@string/two"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="72dp"
+                android:gravity="center"
+                android:text="تا حد زیادی نادرست"
+                android:textColor="@color/tradeoff_2"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/parent_opt_bg3">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@drawable/parent_num_bg3"
+                android:gravity="center"
+                android:text="@string/three"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="72dp"
+                android:gravity="center"
+                android:text="کمی نادرست"
+                android:textColor="@color/tradeoff_3"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/parent_opt_bg4">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@drawable/parent_num_bg4"
+                android:gravity="center"
+                android:text="@string/four"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="72dp"
+                android:gravity="center"
+                android:text="تقریبا درست"
+                android:textColor="@color/tradeoff_4"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/parent_opt_bg5">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@drawable/parent_num_bg5"
+                android:gravity="center"
+                android:text="@string/five"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="72dp"
+                android:gravity="center"
+                android:text="تا حد زیادی درست"
+                android:textColor="@color/tradeoff_5"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/parent_opt_bg6">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@drawable/parent_num_bg6"
+                android:gravity="center"
+                android:text="@string/six"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="72dp"
+                android:gravity="center"
+                android:text="کاملا توصیف‌کننده است"
+                android:textColor="@color/tradeoff_6"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
