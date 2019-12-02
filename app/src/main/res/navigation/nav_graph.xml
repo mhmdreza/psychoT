@@ -69,7 +69,11 @@
         android:id="@+id/quizResultFragment"
         android:name="com.mhmdreza.azmoonyar.views.QuizResultFragment"
         android:label="fragment_quiz_result"
-        tools:layout="@layout/fragment_quiz_result" />
+        tools:layout="@layout/fragment_quiz_result" >
+        <action
+            android:id="@+id/action_quizResultFragment_to_resultListFragment"
+            app:destination="@id/resultListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resultListFragment"
         android:name="com.mhmdreza.azmoonyar.views.ResultListFragment"

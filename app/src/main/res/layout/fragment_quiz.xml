@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".views.QuizFragment">
@@ -62,7 +63,18 @@
             android:id="@+id/parentalQuestion"
             layout="@layout/parental_question"
             android:visibility="gone" />
+
     </FrameLayout>
 
 
+    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_gravity="bottom"
+        app:rcBackgroundColor="@android:color/transparent"
+        app:rcBackgroundPadding="0dp"
+        app:rcProgress="0"
+        app:rcProgressColor="@android:color/holo_orange_dark"
+        app:rcRadius="0dp" />
 </FrameLayout>

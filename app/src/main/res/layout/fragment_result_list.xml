@@ -5,5 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".views.ResultListFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:background="@android:color/holo_red_light"
+        android:layout_gravity="center"
+        android:id="@+id/results"/>
+
 
 </FrameLayout>

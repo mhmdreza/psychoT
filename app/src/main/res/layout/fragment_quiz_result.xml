@@ -5,4 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".views.QuizResultFragment">
 
+    <ImageView
+        android:id="@+id/backQQQ"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_back" />
+
 </FrameLayout>

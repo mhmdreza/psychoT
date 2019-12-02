@@ -30,6 +30,9 @@ class MainFragment : Fragment() {
         quizListLayout.setOnClickListener {
             navController.navigate(R.id.action_mainFragment_to_quizListFragment)
         }
+        resultListLayout.setOnClickListener{
+            navController.navigate(R.id.action_mainFragment_to_resultListFragment)
+        }
         infoButton.setOnClickListener { navigateToInfoFragment() }
         infoTextView.setOnClickListener { navigateToInfoFragment() }
     }

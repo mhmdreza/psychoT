@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.Answer
 import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Quiz
@@ -22,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_quiz.*
 import kotlinx.android.synthetic.main.frequency_level.*
 import kotlinx.android.synthetic.main.parental_question.*
 import kotlinx.android.synthetic.main.trade_off_level.*
+
 
 const val QUIZ_RESULT = "QUIZ_RESULT"
 
@@ -39,12 +39,17 @@ class QuizFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false)
+        return inflater.inflate(com.mhmdreza.azmoonyar.R.layout.fragment_quiz, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exitButton.setOnClickListener { navController.popBackStack(R.id.quizListFragment, false) }
+        exitButton.setOnClickListener {
+            navController.popBackStack(
+                com.mhmdreza.azmoonyar.R.id.quizListFragment,
+                false
+            )
+        }
         if (arguments == null) return
         quiz = arguments!!.getSerializable(QUIZ_KEY) as Quiz
         when (quiz.type) {
@@ -68,6 +73,7 @@ class QuizFragment : Fragment() {
             }
         }
         quizResult = QuizResult(System.currentTimeMillis(), quiz.id)
+        progressBar.max = quiz.questions.size.toFloat()
         setOnClickListeners()
         showQuestion()
     }
@@ -140,13 +146,15 @@ class QuizFragment : Fragment() {
     private fun goToResultFragment() {
         val bundle = Bundle()
         bundle.putSerializable(QUIZ_RESULT, quizResult)
-        navController.navigate(R.id.action_quizFragment_to_quizResultFragment)
+        navController.navigate(com.mhmdreza.azmoonyar.R.id.action_quizFragment_to_quizResultFragment, bundle)
     }
 
     private fun showQuestion() {
+        if (questionNum >= quiz.questions.size) return
         val question = quiz.questions[questionNum]
         questionTitle.text = question.questionTitle
         questionNumber.text = "${questionNum + 1}/${quiz.questions.size}"
+        progressBar.progress = (questionNum + 1).toFloat()
         val extra = question.extra
         if (extra.isNotEmpty()) {
             if (extra[0] == TRADEOFF) {
@@ -154,7 +162,7 @@ class QuizFragment : Fragment() {
                 highScoreText.text = extra[2]
             } else {
                 whichParent.text =
-                    resources.getText(if (extra[0] == FATHER) R.string.fatherQuestion else R.string.motherQuestion)
+                    resources.getText(if (extra[0] == FATHER) com.mhmdreza.azmoonyar.R.string.fatherQuestion else com.mhmdreza.azmoonyar.R.string.motherQuestion)
             }
         }
     }
