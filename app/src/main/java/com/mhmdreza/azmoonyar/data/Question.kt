@@ -3,8 +3,7 @@ package com.mhmdreza.azmoonyar.data
 class Question(
     val id : Int,
     val questionTitle: String,
-    val type: AnswerType,
-    val extra : ArrayList<String> = arrayListOf()
+    val extra : ArrayList<String> = ArrayList()
 )
 
 enum class AnswerType {

@@ -1,3 +1,5 @@
 package com.mhmdreza.azmoonyar.data
 
-class QuizResult(time: Long, quizId: Int, answerList: List<Answer>)
+import java.io.Serializable
+
+class QuizResult(val time: Long, val quizId: Int, val answerList: ArrayList<Answer> = arrayListOf()) : Serializable

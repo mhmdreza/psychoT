@@ -30,6 +30,9 @@ class StartQuizFragment : Fragment() {
         val quiz = arguments!!.getSerializable(QUIZ_KEY) as Quiz
         toolbarTitle.text = quiz.title
         quizDescription.text = quiz.description
+        startQuiz.setOnClickListener {
+            navController.navigate(R.id.action_startQuizFragment_to_quizFragment, arguments)
+        }
     }
 
 

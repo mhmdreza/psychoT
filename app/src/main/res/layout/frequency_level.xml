@@ -5,7 +5,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/questionTitle"
+        android:id="@+id/freqQuestionTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -35,7 +35,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/five"
+                android:id="@+id/fiveFreq"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/answer_height"
                 android:layout_marginTop="16dp"
@@ -68,7 +68,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/four"
+                android:id="@+id/fourFreq"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/answer_height"
                 android:layout_marginTop="16dp"
@@ -101,7 +101,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/three"
+                android:id="@+id/threeFreq"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/answer_height"
                 android:layout_marginTop="16dp"
@@ -135,7 +135,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/two"
+                android:id="@+id/twoFreq"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/answer_height"
                 android:layout_marginTop="16dp"
@@ -169,7 +169,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/one"
+                android:id="@+id/oneFreq"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/answer_height"
                 android:layout_marginTop="16dp"

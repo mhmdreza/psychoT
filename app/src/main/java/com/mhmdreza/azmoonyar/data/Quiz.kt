@@ -6,5 +6,6 @@ class Quiz(
     val id: Int,
     val title: String,
     val description: String,
-    val questions: ArrayList<Question>
+    val type: AnswerType,
+    val questions: ArrayList<Question> = ArrayList()
 ) : Serializable
