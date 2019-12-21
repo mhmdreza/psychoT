@@ -5,5 +5,65 @@
     android:layout_height="match_parent"
     tools:context=".views.ResultFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
+
+        <ImageView
+            android:id="@+id/exitButton"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_exit" />
+
+
+        <ImageView
+            android:id="@+id/answerIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_answer" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/answerIcon"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text=""
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_below="@+id/title"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/answerIcon"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_marginTop="88dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/quizResultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
 
 </FrameLayout>

@@ -1,14 +1,18 @@
 package com.mhmdreza.azmoonyar.data.quizes
 
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import androidx.core.text.bold
+import androidx.core.text.toSpannable
 import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Question
 import com.mhmdreza.azmoonyar.data.Quiz
 
 fun getQuiz6(): Quiz {
     val quiz = Quiz(
-        6,
-        "راهنمای پرسشنامه فرزندپروری یانگ",
-        "desc2",
+        5,
+        "پرسشنامه فرزندپروری یانگ",
+        getDescription(),
         AnswerType.PARENT_CHOICE
     )
     questions6.forEachIndexed { index, s ->
@@ -16,6 +20,19 @@ fun getQuiz6(): Quiz {
     }
     return quiz
 }
+
+private fun getDescription(): Spannable {
+    return SpannableStringBuilder()
+        .bold { append( "معرفی\n") }
+        .append(
+            "اين ابزار اقتباسي است از نظريه اقتدار والدين كه بر اساس نظريه بامريند از آزادگذاري، استبدادي و اقتدار منطقي والدين، براي بررسي الگوهاي نفوذ و شيوه\u200Cهاي فرزندپروري ساخته شده است. اين پرسشنامه شامل 30 ماده است كه 10 ماده آن به شيوه آزادگذاري مطلق، 10 ماده به شيوه استبدادي و 10 ماده ديگر به شيوه اقتدار منطقي والدين در امر پرورش فرزند مربوط مي\u200Cشود. " + "\n"
+        )
+        .bold { append("والدين گرامي: با سلام\n") }
+        .append("\n" +
+                "معمولاً والدين روش\u200Cهاي متفاوتي براي تربيت فرزندان به\u200Cكار مي\u200Cگيرند. در ادامه عباراتي می\u200Cآید كه برخي از روش\u200Cهاي فرزندپروري را توصيف مي\u200Cكند. پاسخ هر عبارت در يك پيوستار 5 درجه\u200Cاي از كاملاً موافقم تا كاملاً مخالفم قرار گرفته است. لطفاً هر يك از عبارات را به\u200Cدقت مطالعه كرده و مناسب\u200Cترين پاسخ كه با نگرش تربيتي شما هماهنگ است را انتخاب كنيد.")
+        .toSpannable()
+}
+
 
 val questions6 = arrayListOf(
     "عاشقانه مرا دوست داشت و با من مانند يك فرد خاص رفتار مي\u200Cكرد.",

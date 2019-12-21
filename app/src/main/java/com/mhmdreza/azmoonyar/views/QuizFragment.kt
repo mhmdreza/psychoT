@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.mhmdreza.azmoonyar.data.Answer
@@ -49,6 +50,14 @@ class QuizFragment : Fragment() {
                 com.mhmdreza.azmoonyar.R.id.quizListFragment,
                 false
             )
+        }
+        previousQuestion.setOnClickListener {
+            if (questionNum <= 0) {
+                Toast.makeText(view.context, "شما به ابتدای لیست سوالات رسیدید.", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            questionNum--
+            showQuestion()
         }
         if (arguments == null) return
         quiz = arguments!!.getSerializable(QUIZ_KEY) as Quiz
@@ -127,20 +136,30 @@ class QuizFragment : Fragment() {
 
     private fun onAnswerClicked(answer: Int) {
         val extra = quiz.questions[questionNum].extra
+        val isQuestionSolved = questionNum < quizResult.answerList.size
         when (quiz.type) {
             AnswerType.AGREEMENT_LEVEL_4 -> {
                 if (extra.isNotEmpty())
-                    quizResult.answerList.add(Answer(answer, extra = extra[0]))
-                else quizResult.answerList.add(Answer(answer))
+                    addNewQuizResult(answer, isQuestionSolved, extra[0])
+                else addNewQuizResult(answer, isQuestionSolved)
             }
             else -> {
-                quizResult.answerList.add(Answer(answer))
+                addNewQuizResult(answer, isQuestionSolved)
             }
         }
         questionNum++
         if (questionNum < quiz.questions.size)
             showQuestion()
         else goToResultFragment()
+    }
+
+    private fun addNewQuizResult(answer: Int, questionSolved: Boolean, extra: String = "") {
+        if (questionSolved) {
+            quizResult.answerList.add(questionNum, Answer(answer, extra))
+            quizResult.answerList.removeAt(questionNum + 1)
+        } else {
+            quizResult.answerList.add(Answer(answer, extra))
+        }
     }
 
     private fun goToResultFragment() {

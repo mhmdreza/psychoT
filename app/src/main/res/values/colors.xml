@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#7F1DFE</color>
     <color name="info_background">#F3F6FB</color>
-    <color name="result_background">#4970CD</color>
+    <color name="result_background">#4870CC</color>
     <color name="purple_1">#B983FF</color>
     <color name="purple_2">#AA6BFF</color>
     <color name="purple_3">#9E52FD</color>
@@ -18,4 +18,5 @@
     <color name="tradeoff_6">#8D35FB</color>
     <color name="tradeoff_7">#8A20FF</color>
     <color name="purple_stroke">#4B3677</color>
+    <color name="disableColor">#1D1D1D</color>
 </resources>

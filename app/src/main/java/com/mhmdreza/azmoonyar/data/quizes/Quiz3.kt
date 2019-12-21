@@ -1,20 +1,39 @@
 package com.mhmdreza.azmoonyar.data.quizes
 
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import androidx.core.text.bold
+import androidx.core.text.toSpannable
+import com.mhmdreza.azmoonyar.data.Answer
 import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Question
 import com.mhmdreza.azmoonyar.data.Quiz
 
 fun getQuiz3(): Quiz {
     val quiz = Quiz(
-        3,
-        "راهنمای پرسشنامه شيوه\u200Cهاي فرزندپروري بامريند",
-        "desc2",
+        2,
+        "پرسشنامه شيوه\u200Cهاي فرزندپروري بامريند",
+        getDescription(),
         AnswerType.AGREEMENT_LEVEL_5
     )
     questions3.forEachIndexed { index, s ->
         quiz.questions.add(Question(index + 1, s))
     }
     return quiz
+}
+
+private fun getDescription(): Spannable {
+    return SpannableStringBuilder()
+        .bold { append("معرفی\n") }
+        .append(
+            "اين ابزار اقتباسي است از نظريه اقتدار والدين كه بر اساس نظريه بامريند از آزادگذاري، استبدادي و اقتدار منطقي والدين، براي بررسي الگوهاي نفوذ و شيوه\u200Cهاي فرزندپروري ساخته شده است. اين پرسشنامه شامل 30 ماده است كه 10 ماده آن به شيوه آزادگذاري مطلق، 10 ماده به شيوه استبدادي و 10 ماده ديگر به شيوه اقتدار منطقي والدين در امر پرورش فرزند مربوط مي\u200Cشود. " + "\n"
+        )
+        .bold { append("والدين گرامي: با سلام\n") }
+        .append(
+            "\n" +
+                    "معمولاً والدين روش\u200Cهاي متفاوتي براي تربيت فرزندان به\u200Cكار مي\u200Cگيرند. در ادامه عباراتي می\u200Cآید كه برخي از روش\u200Cهاي فرزندپروري را توصيف مي\u200Cكند. پاسخ هر عبارت در يك پيوستار 5 درجه\u200Cاي از كاملاً موافقم تا كاملاً مخالفم قرار گرفته است. لطفاً هر يك از عبارات را به\u200Cدقت مطالعه كرده و مناسب\u200Cترين پاسخ كه با نگرش تربيتي شما هماهنگ است را انتخاب كنيد."
+        )
+        .toSpannable()
 }
 
 val questions3 = arrayListOf(
@@ -50,3 +69,48 @@ val questions3 = arrayListOf(
     "بچه\u200Cها جدي و كوشا نخواهند بود مگر اين\u200Cكه درباره كارهاي آنها سخت\u200Cگيري كنيم.",
     "اگر چه بچه\u200Cها تجربه كمي دارند اما گاهي اوقات نظر آنها بهتر از نظر والدين است."
 )
+
+
+fun getQuiz3Result(answerList: ArrayList<Answer>): String {
+    var firstScore = 0f
+    var secondScore = 0f
+    var thirdScore = 0f
+    answerList.forEachIndexed { index, answer ->
+        val questionNum = index + 1
+        when {
+            first.contains(questionNum) -> {
+                firstScore += answer.answer
+            }
+            second.contains(questionNum) -> {
+                secondScore += answer.answer
+            }
+            third.contains(questionNum) -> {
+                thirdScore += answer.answer
+            }
+        }
+    }
+    firstScore /= first.size
+    secondScore /= second.size
+    thirdScore /= third.size
+    var result = ""
+    result += if (firstScore >= 2.1) {
+        "شما سهل گیر هستید! \n"
+    } else {
+        "شما سهل گیر نیستید! \n"
+    }
+    result += if (secondScore >= 1.8) {
+        "شما مستبد هستید! \n"
+    } else {
+        "شما مستبد نیستید! \n"
+    }
+    result += if (thirdScore >= 2.1) {
+        "شما قاطع هستید! \n"
+    } else {
+        "شما قاطع نیستید! \n"
+    }
+    return result
+}
+
+private val first = arrayListOf(1, 6, 10, 13, 14, 17, 19, 24, 28, 29) // آزاد گذاری
+private val second = arrayListOf(2, 3, 7, 9, 12, 16, 18, 21, 25, 26) //2. استبدادی
+private val third = arrayListOf(4, 5, 8, 11, 15, 20, 22, 23, 27, 30)// 3.	قاطع و اطمینان بخش

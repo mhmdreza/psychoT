@@ -1,20 +1,40 @@
 package com.mhmdreza.azmoonyar.data.quizes
 
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import androidx.core.text.bold
+import androidx.core.text.toSpannable
+import com.mhmdreza.azmoonyar.data.Answer
 import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Question
 import com.mhmdreza.azmoonyar.data.Quiz
 
 fun getQuiz2(): Quiz {
     val quiz = Quiz(
-        2,
-        "راهنمای مقیاس سبک تربیتی والدین",
-        "desc2"
+        1,
+        "مقیاس سبک تربیتی والدین",
+        getDescription()
         , AnswerType.AGREEMENT_LEVEL_5
     )
     questions2.forEachIndexed { index, s ->
         quiz.questions.add(Question(index + 1, s))
     }
     return quiz
+}
+
+private fun getDescription(): Spannable {
+    return SpannableStringBuilder()
+        .bold {
+            append(
+                "معرفی\n"
+            )
+        }
+        .append("این مقیاس دارای 21 عبارت است که برای ارزیابی 4 سبک فرزندپروری مستبدانه، بی\u200Cاعتنا، سهل\u200Cگیرانه و قاطعانه والدین طراحی و تهیه شده است.")
+        .bold {
+            append(
+                "لطفا جملاتی که در ادامه می\u200Cآید را به دقت مطالعه کرده و مناسب\u200Cترین گزینه را انخاب نمایید.\n"
+            )
+        }.toSpannable()
 }
 
 val questions2 = arrayListOf(
@@ -40,3 +60,59 @@ val questions2 = arrayListOf(
     "هر چند فرزندان گاهی اشتباه می\u200Cکنند، ولی در بعضی اوقات نظرات آن\u200Cها قابل قبول است.",
     "اگر فرزندان به محدویت\u200Cهایی که والدین برای آن\u200Cها قائلند اعتراض داشتند والدین باید با صحبت کردن آن\u200Cها را قانع کنند."
 )
+
+
+fun getQuiz2Result(answerList: ArrayList<Answer>): String {
+    var sahlGirScore = 0f
+    var estebdadScore = 0f
+    var ghateScore = 0f
+    var biEtenaScore = 0f
+    answerList.forEachIndexed { index, answer ->
+        val questionNum = index + 1
+        when {
+            sahlGir.contains(questionNum) -> {
+                sahlGirScore += answer.answer
+            }
+            estebdad.contains(questionNum) -> {
+                estebdadScore += answer.answer
+            }
+            ghate.contains(questionNum) -> {
+                ghateScore += answer.answer
+            }
+            else -> {
+                biEtenaScore += answer.answer
+            }
+        }
+    }
+    sahlGirScore /= sahlGir.size
+    estebdadScore /= estebdad.size
+    ghateScore /= ghate.size
+    biEtenaScore /= biEtena.size
+    var result = ""
+    result += if (sahlGirScore >= 1.6) {
+        "شما سهل گیر هستید! \n"
+    } else {
+        "شما سهل گیر نیستید! \n"
+    }
+    result += if (estebdadScore >= 2.4) {
+        "شما مستبد هستید! \n"
+    } else {
+        "شما مستبد نیستید! \n"
+    }
+    result += if (ghateScore >= 2.4) {
+        "شما قاطع هستید! \n"
+    } else {
+        "شما قاطع نیستید! \n"
+    }
+    result += if (biEtenaScore >= 2) {
+        "شما بی اعتنا هستید! \n"
+    } else {
+        "شما بی اعتنا نیستید! \n"
+    }
+    return result
+}
+
+private val sahlGir = arrayListOf(9, 17, 19, 20)
+private val estebdad = arrayListOf(2, 3, 8, 11, 13, 16)
+private val ghate = arrayListOf(4, 6, 7, 10, 18, 21)
+private val biEtena = arrayListOf(1, 5, 12, 14, 15)

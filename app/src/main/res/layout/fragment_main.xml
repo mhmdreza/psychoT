@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/item_background_general"
     tools:context=".views.MainFragment">
 
     <FrameLayout
@@ -37,6 +38,17 @@
             android:ellipsize="end"/>
 
 
+        <ImageView
+            android:id="@+id/settingButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_settings_dark_24"
+            android:layout_gravity="center_vertical|end"/>
+
+
 
     </FrameLayout>
 
@@ -44,11 +56,11 @@
     <TextView
         android:id="@+id/infoTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:background="@drawable/info_background"
         android:gravity="center_vertical"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:lineSpacingExtra="4dp"
         android:paddingLeft="32dp"
         android:paddingTop="16dp"
@@ -62,42 +74,53 @@
     <FrameLayout
         android:id="@+id/quizListLayout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/quiz_background">
 
+
+        <View
+            android:layout_width="82dp"
+            android:layout_height="46dp"
+            android:layout_gravity="start|top"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/item_card_dots" />
+
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="32dp"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_question_mark_white_48" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="110dp"
+            android:layout_marginEnd="100dp"
             android:gravity="end"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:text="آزمون‌ها"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:gravity="center_vertical|end"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical|end"
                 android:text="لیست آزمون‌ها"
                 android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -106,6 +129,7 @@
             android:layout_height="22dp"
             android:layout_gravity="bottom|start"
             android:layout_marginStart="16dp"
+            android:tint="@android:color/white"
             android:layout_marginBottom="16dp"
             android:src="@drawable/ic_back" />
     </FrameLayout>
@@ -113,42 +137,53 @@
     <FrameLayout
         android:id="@+id/resultListLayout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/result_background">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="32dp"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_pie_chart_white_48" />
+
+        <View
+            android:layout_width="82dp"
+            android:layout_height="46dp"
+            android:layout_gravity="start|top"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/item_card_dots" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="110dp"
+            android:layout_marginEnd="100dp"
             android:gravity="end"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:text="نتایج آزمون‌ها"
+                android:gravity="center_vertical|end"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical|end"
                 android:text="لیست نتایج پیشین"
                 android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
+
 
         </LinearLayout>
 
@@ -158,6 +193,7 @@
             android:layout_gravity="bottom|start"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
+            android:tint="@android:color/white"
             android:src="@drawable/ic_back" />
     </FrameLayout>
 

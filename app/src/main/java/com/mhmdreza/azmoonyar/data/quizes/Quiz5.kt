@@ -1,14 +1,19 @@
 package com.mhmdreza.azmoonyar.data.quizes
 
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import androidx.core.text.bold
+import androidx.core.text.toSpannable
+import com.mhmdreza.azmoonyar.data.Answer
 import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Question
 import com.mhmdreza.azmoonyar.data.Quiz
 
 fun getQuiz5(): Quiz {
     val quiz = Quiz(
-        5,
-        "راهنمای پرسشنامه فرزندپروری آلاباما (فرم كودكان)",
-        "desc2",
+        4,
+        "پرسشنامه فرزندپروری آلاباما (فرم كودكان)",
+        getDescription(),
         AnswerType.FREQUENCY_LEVEL
     )
     questions5.forEachIndexed { index, s ->
@@ -16,6 +21,17 @@ fun getQuiz5(): Quiz {
     }
     return quiz
 }
+private fun getDescription(): Spannable {
+    return SpannableStringBuilder()
+        .bold { append( "معرفی\n") }
+        .append(
+            "اين پرسشنامه يك ابزار خودگزارشي و داراي 42 عبارت است كه پنج بعد رفتار فرزندپروری که عبارتند از مشاركت والدين (پدر و مادر به طور جداگانه)، فرزندپروری مثبت، ضعف در نظارت و راهنمايي، عدم ثبات در نحوه برخورد با فرزند و تنبيه بدني را مورد ارزيابي قرار مي\u200Fدهد. لازم به ذكر است كه عبارات مربوط به زيرمقياس مشاركت والدين هر كدام از دو بخش تشكيل شده، كه يك بخش مربوط به مشاركت مادر و ديگري مربوط به مشاركت پدر است. \n" +
+                    "در ادامه، تعدادی جمله در مورد خانواده\u200Cتان آمده است. لطفاً بر حسب اینکه هر مورد معمولاً چقدر در خانه\u200Cتان اتفاق می\u200Cافتد به آن\u200Cها امتیاز دهید. پاسخ\u200Cهایی که می\u200Cتوانید از آن\u200Cها استفاده کنید عبارتند از:\n" +
+                    "هرگز (1)، تقریباً هیچ وقت (2)، گاهی اوقات (3)، اغلب اوقات (4)، همیشه (5). لطفاً به همه موارد پاسخ بدهید.\n"
+        )
+        .toSpannable()
+}
+
 
 val questions5 = arrayListOf(
     "با مادرتان صحبت\u200Fهاي دوستانه\u200Fاي داريد.",
@@ -70,3 +86,80 @@ val questions5 = arrayListOf(
     "والدينتان براي تنبيه شما از روش محروم كردن استفاده مي\u200Fكنند (مثلاً براي مدتي شما را از انجام فعاليت\u200Fهاي مورد علاقه\u200Fتان منع مي\u200Fكنند).",
     "والدينتان به عنوان تنبيه شما را وادار به انجام كارهاي سخت مي\u200Fكنند."
 )
+
+fun getQuiz5Result(answerList: ArrayList<Answer>): String {
+    var firstScore = 0f
+    var secondScore = 0f
+    var thirdScore = 0f
+    var fourthScore = 0f
+    var fifthScore = 0f
+    var fatherScore = 0f
+    answerList.forEachIndexed { index, answer ->
+        val questionNum = index + 1
+        when {
+            first.contains(questionNum) -> {
+                firstScore += answer.answer
+            }
+            second.contains(questionNum) -> {
+                secondScore += answer.answer
+            }
+            third.contains(questionNum) -> {
+                thirdScore += answer.answer
+            }
+            fourth.contains(questionNum) -> {
+                fourthScore += answer.answer
+            }
+            fifth.contains(questionNum) -> {
+                fifthScore += answer.answer
+            }
+            father.contains(questionNum) -> {
+                fatherScore += answer.answer
+            }
+        }
+    }
+    firstScore /= first.size
+    secondScore /= second.size
+    thirdScore /= third.size
+    fourthScore /= fourth.size
+    fifthScore /= fifth.size
+    fatherScore /= father.size
+    var result = ""
+    result += if (firstScore >= 4) {
+        "مشارکت مناسب مادر\n"
+    } else {
+        "مشارکت نامناسب مادر\n"
+    }
+    result += if (fatherScore >= 4) {
+        "مشارکت مناسب پدر\n"
+    } else {
+        "مشارکت نامناسب پدر\n"
+    }
+    result += if (secondScore >= 2.4) {
+        "فرزندپروری مثبت\n"
+    } else {
+        "فرزندپروری منفی\n"
+    }
+    result += if (thirdScore >= 2.4) {
+        "عدم ثبات در نحوه برخورد با فرزند\n"
+    } else {
+        " ثبات در نحوه برخورد با فرزند\n"
+    }
+    result += if (fourthScore >= 4) {
+        "ضعف در نظارت و راهنمايي مناسب \n"
+    } else {
+        "عدم ضعف در نظارت و راهنمايي مناسب \n"
+    }
+    result += if (fifthScore >= 1.2) {
+        "بکاربردن تنبيه بدني\n"
+    } else {
+        "بکارنبردن تنبيه بدني\n"
+    }
+    return result
+}
+
+private val first = arrayListOf(1, 5, 9, 12, 15, 19, 21, 27, 31, 35) //1.	مشاركت والدين
+private val father = arrayListOf(2, 6, 10, 13, 16, 20, 22, 28, 32, 36) //1.	مشاركت والدين
+private val second = arrayListOf(3, 7, 18, 23, 25, 37) //2.	فرزندپروری مثبت:
+private val third = arrayListOf(4, 11, 17, 30, 34, 41)// 3.	عدم ثبات در نحوه برخورد با فرزند:
+private val fourth = arrayListOf(8, 14, 24, 26, 29, 33, 38, 39, 40, 42)// 4.	ضعف در نظارت و راهنمايي:
+private val fifth = arrayListOf(43, 45, 49)// تنبیه بدنی

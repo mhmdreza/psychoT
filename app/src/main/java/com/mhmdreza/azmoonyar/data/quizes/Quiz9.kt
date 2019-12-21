@@ -1,5 +1,10 @@
 package com.mhmdreza.azmoonyar.data.quizes
 
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import androidx.core.text.bold
+import androidx.core.text.toSpannable
+import com.mhmdreza.azmoonyar.data.Answer
 import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Question
 import com.mhmdreza.azmoonyar.data.Quiz
@@ -9,9 +14,9 @@ const val TRADEOFF = "tradeoff"
 
 fun getQuiz9(): Quiz {
     val quiz = Quiz(
-        9,
+        8,
         "راهنمای مقياس فرزندپروري آرنولد",
-        "desc2",
+        getDescription(),
         AnswerType.TRADE_OFF
     )
     questions9.forEachIndexed { index, arnoldModel ->
@@ -25,6 +30,21 @@ fun getQuiz9(): Quiz {
     }
     return quiz
 }
+
+private fun getDescription(): Spannable {
+    return SpannableStringBuilder()
+        .bold { append("معرفی\n") }
+        .append(
+            "\n" +
+                    "این پرسشنامه 30 ماده\u200Cاي توسط آرنولد و همكاران (1993) طراحي شده و با پاسخ به آن، بهترين توصيف از شيوه فرزندپروري در طي دو ماه گذشته به\u200Cصورت خودسنجي و توسط خود والدين به\u200Cدست مي\u200Cآيد. اين پرسشنامه سه الگوي انضباطي ناكارآمد والدين را مي\u200Cسنجد. \n"
+        )
+        .bold { append("والدين گرامي: با سلام\n") }
+        .append(
+            "معمولاً شما روش\u200Cهاي متفاوتي براي برخورد با مشكلات پيش مي\u200Cگيريد. در متن زير عباراتي است كه برخي  از روش\u200Cهاي فرزندپروري را توصيف مي\u200Cكند. براي هر عبارت يك مقياس 7 درجه\u200Cاي آمده كه در دو طرف آن دو نمونه رفتار توصيف شده است كه معمولاً در نقطه مقابل يكديگر هستند. مثلاً در مورد مثال زير يعني \"هنگام صرف غذا \" در سمت راست نوشته شده است كه \" مي\u200C\u200Cگذارم كودكم تصميم بگيرد چقدر بخورد.\" و در سمت چپ دقيقاً رفتار متضاد آن آمده است. يعني \"من تصميم مي\u200Cگيرم كودكم چقدر بخورد.\" اگر روش شما هميشه و دقيقاً مطابق جمله سمت راست است در جدول علامت بزنيد، اگر اكثر اوقات روش جمله سمت راست را استفاده مي\u200Cكنيد ولي نه هميشه، در عدد 2 را علامت بزنيد. اما اگر روش شما هميشه و دقيقاً مطابق جمله سمت چپ است، عدد 7 را علامت بزنيد و در صورتي كه اكثر اوقات چنين است، عدد 6 را علامت بزنيد. اگر گاهي از اين روش و گاهي از آن روش استفاده مي\u200Cكنيد، بر اساس اين\u200Cكه بيشتر به كدام روش متمايل است در اعداد 3، 4، يا 5 را انتخاب كنيد. لطفاً\u200C جملات زير را بخوانيد و در مورد هر جمله، عددي كه بهتر از همه روش فرزندپروري شما را در طي دو ماه گذشته توصيف مي\u200Cكند، را علامت بزنيد."
+        )
+        .toSpannable()
+}
+
 
 val questions9 = arrayListOf(
     ArnoldModel(
@@ -180,3 +200,48 @@ val questions9 = arrayListOf(
 
 
 class ArnoldModel(val title: String, val startRange: String, val endRange: String)
+
+
+fun getQuiz9Result(answerList: ArrayList<Answer>): String {
+    var firstScore = 0f
+    var secondScore = 0f
+    var thirdScore = 0f
+    answerList.forEachIndexed { index, answer ->
+        val questionNum = index + 1
+        when {
+            first.contains(questionNum) -> {
+                firstScore += answer.answer
+            }
+            second.contains(questionNum) -> {
+                secondScore += answer.answer
+            }
+            third.contains(questionNum) -> {
+                thirdScore += answer.answer
+            }
+        }
+    }
+    firstScore /= first.size
+    secondScore /= second.size
+    thirdScore /= third.size
+    var result = ""
+    result += if (firstScore >= 3) {
+        "رفتار افراطی در اهمال کاری\n"
+    } else {
+        "رفتار مناسب در اهمال کاری\n"
+    }
+    result += if (secondScore >= 3) {
+        "رفتار افراطی در واکنش بیش از حد\n"
+    } else {
+        "رفتار مناسب در واکنش بیش از حد\n"
+    }
+    result += if (thirdScore >= 3) {
+        "رفتار افراطی در پرگویی در کلام\n"
+    } else {
+        "رفتار مناسب در پرگویی در کلام\n"
+    }
+    return result
+}
+
+private val first = arrayListOf(7, 8, 12, 15, 16, 19, 20, 21, 24, 26, 30) //1.	اهمال کاری
+private val second = arrayListOf(3, 6, 9, 10, 14, 17, 18, 22, 25, 28) //2.	واکنش بیش از حد
+private val third = arrayListOf(2, 4, 7, 9, 11, 23, 29)// 3.	پرگویی در کلام

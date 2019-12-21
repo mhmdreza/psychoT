@@ -24,4 +24,10 @@
     <string name="submit">تایید و ادامه</string>
     <string name="motherQuestion">عبارت زير تا چه حد درباره رفتار مادرتان با شما در خلال 16 سال اول زندگي‌تان درست است؟</string>
     <string name="fatherQuestion">عبارت زير تا چه حد درباره رفتار پدرتان با شما در خلال 16 سال اول زندگي‌تان درست است؟</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quiz_result">نتیجه آزمون</string>
+    <string name="previousQuestion">سوال قبل</string>
+    <string name="prevQuizes">آزمون‌های پیشین</string>
 </resources>
