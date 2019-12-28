@@ -1,15 +1,19 @@
 package com.mhmdreza.azmoonyar.views
 
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.Answer
 import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Quiz
@@ -40,14 +44,14 @@ class QuizFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(com.mhmdreza.azmoonyar.R.layout.fragment_quiz, container, false)
+        return inflater.inflate(R.layout.fragment_quiz, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         exitButton.setOnClickListener {
             navController.popBackStack(
-                com.mhmdreza.azmoonyar.R.id.quizListFragment,
+                R.id.quizListFragment,
                 false
             )
         }
@@ -165,24 +169,37 @@ class QuizFragment : Fragment() {
     private fun goToResultFragment() {
         val bundle = Bundle()
         bundle.putSerializable(QUIZ_RESULT, quizResult)
-        navController.navigate(com.mhmdreza.azmoonyar.R.id.action_quizFragment_to_quizResultFragment, bundle)
+        navController.navigate(R.id.action_quizFragment_to_loadingFragment, bundle)
     }
 
     private fun showQuestion() {
         if (questionNum >= quiz.questions.size) return
         val question = quiz.questions[questionNum]
         questionTitle.text = question.questionTitle
+        val loadAnimation = AnimationUtils.loadAnimation(view!!.context, R.anim.text_anim)
+        questionTitle.startAnimation(loadAnimation)
         questionNumber.text = "${questionNum + 1}/${quiz.questions.size}"
-        progressBar.progress = (questionNum + 1).toFloat()
+        updateProgressBar()
         val extra = question.extra
         if (extra.isNotEmpty()) {
             if (extra[0] == TRADEOFF) {
                 lowScoreText.text = extra[1]
                 highScoreText.text = extra[2]
+                lowScoreText.startAnimation(loadAnimation)
+                highScoreText.startAnimation(loadAnimation)
             } else {
                 whichParent.text =
-                    resources.getText(if (extra[0] == FATHER) com.mhmdreza.azmoonyar.R.string.fatherQuestion else com.mhmdreza.azmoonyar.R.string.motherQuestion)
+                    resources.getText(if (extra[0] == FATHER) R.string.fatherQuestion else R.string.motherQuestion)
             }
         }
+    }
+
+    private fun updateProgressBar() {
+        progressBar.progress = (questionNum + 1).toFloat()
+        val animation = ObjectAnimator.ofInt(progressBar, "progress", questionNum, questionNum + 1)
+        animation.duration = 1000
+        animation.interpolator = DecelerateInterpolator()
+        animation.start()
+        progressBar.clearAnimation()
     }
 }

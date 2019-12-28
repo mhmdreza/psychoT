@@ -27,11 +27,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/sevenTradeOff"
-            android:layout_width="44dp"
+            android:layout_width="@dimen/tradeOff"
             android:layout_height="@dimen/answer_height"
             android:background="@drawable/trade_off_bg7"
             android:gravity="center"
@@ -43,7 +45,7 @@
             android:textStyle="bold" />
         <TextView
             android:id="@+id/sixTradeOff"
-            android:layout_width="44dp"
+            android:layout_width="@dimen/tradeOff"
             android:layout_height="@dimen/answer_height"
             android:background="@drawable/trade_off_bg6"
             android:gravity="center"
@@ -55,7 +57,7 @@
             android:textStyle="bold" />
         <TextView
             android:id="@+id/fiveTradeOff"
-            android:layout_width="44dp"
+            android:layout_width="@dimen/tradeOff"
             android:layout_height="@dimen/answer_height"
             android:background="@drawable/trade_off_bg5"
             android:gravity="center"
@@ -67,7 +69,7 @@
             android:textStyle="bold" />
         <TextView
             android:id="@+id/fourTradeOff"
-            android:layout_width="44dp"
+            android:layout_width="@dimen/tradeOff"
             android:layout_height="@dimen/answer_height"
             android:background="@drawable/trade_off_bg4"
             android:gravity="center"
@@ -79,7 +81,7 @@
             android:textStyle="bold" />
         <TextView
             android:id="@+id/threeTradeOff"
-            android:layout_width="44dp"
+            android:layout_width="@dimen/tradeOff"
             android:layout_height="@dimen/answer_height"
             android:background="@drawable/trade_off_bg3"
             android:gravity="center"
@@ -91,7 +93,7 @@
             android:textStyle="bold" />
         <TextView
             android:id="@+id/twoTradeOff"
-            android:layout_width="44dp"
+            android:layout_width="@dimen/tradeOff"
             android:layout_height="@dimen/answer_height"
             android:background="@drawable/trade_off_bg2"
             android:gravity="center"
@@ -103,7 +105,7 @@
             android:textStyle="bold" />
         <TextView
             android:id="@+id/oneTradeOff"
-            android:layout_width="44dp"
+            android:layout_width="@dimen/tradeOff"
             android:layout_height="@dimen/answer_height"
             android:background="@drawable/trade_off_bg1"
             android:gravity="center"

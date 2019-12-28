@@ -34,11 +34,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="80dp"
+            android:layout_width="@dimen/agreeL4"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -67,13 +69,13 @@
         <View
             android:layout_width="1px"
             android:layout_height="30dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="6dp"
             android:background="@android:color/darker_gray" />
 
         <LinearLayout
-            android:layout_width="80dp"
+            android:layout_width="@dimen/agreeL4"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -103,13 +105,13 @@
         <View
             android:layout_width="1px"
             android:layout_height="30dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="6dp"
             android:background="@android:color/darker_gray" />
 
         <LinearLayout
-            android:layout_width="80dp"
+            android:layout_width="@dimen/agreeL4"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -139,13 +141,13 @@
         <View
             android:layout_width="1px"
             android:layout_height="30dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="6dp"
             android:background="@android:color/darker_gray" />
 
         <LinearLayout
-            android:layout_width="80dp"
+            android:layout_width="@dimen/agreeL4"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 

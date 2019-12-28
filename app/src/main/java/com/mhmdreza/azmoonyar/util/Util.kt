@@ -32,28 +32,28 @@ fun normalizeNumber(input: String): String {
 
 fun calculateQuizResultText(quizResult: QuizResult): String{
     return when(quizResult.quizId){
-        1 ->{
+        0 ->{
             getQuiz1Result(quizResult.answerList)
         }
-        2 ->{
+        1 ->{
             getQuiz2Result(quizResult.answerList)
         }
-        3 ->{
+        2 ->{
             getQuiz3Result(quizResult.answerList)
         }
-        4 ->{
+        3 ->{
             getQuiz4Result(quizResult.answerList)
         }
-        5 ->{
+        4 ->{
             getQuiz5Result(quizResult.answerList)
         }
-        7 ->{
+        5 ->{
             getQuiz7Result(quizResult.answerList)
         }
-        8 ->{
+        6 ->{
             getQuiz8Result(quizResult.answerList)
         }
-        9 ->{
+        8 ->{
             getQuiz9Result(quizResult.answerList)
         }
         else ->{

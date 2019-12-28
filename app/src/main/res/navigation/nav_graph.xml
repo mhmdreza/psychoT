@@ -13,11 +13,19 @@
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
             app:destination="@+id/mainFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_nameFragment"
             app:destination="@id/nameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true"/>
     </fragment>
@@ -28,12 +36,24 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_infoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/infoFragment" />
         <action
             android:id="@+id/action_mainFragment_to_quizListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/quizListFragment" />
         <action
             android:id="@+id/action_mainFragment_to_resultListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/resultListFragment" />
     </fragment>
     <fragment
@@ -48,6 +68,10 @@
         tools:layout="@layout/fragment_start_quiz" >
         <action
             android:id="@+id/action_startQuizFragment_to_quizFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/quizFragment" />
     </fragment>
     <fragment
@@ -57,6 +81,10 @@
         tools:layout="@layout/fragment_quiz_list" >
         <action
             android:id="@+id/action_quizListFragment_to_startQuizFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/startQuizFragment" />
     </fragment>
     <fragment
@@ -65,8 +93,8 @@
         android:label="fragment_quiz"
         tools:layout="@layout/fragment_quiz" >
         <action
-            android:id="@+id/action_quizFragment_to_quizResultFragment"
-            app:destination="@id/quizResultFragment"
+            android:id="@+id/action_quizFragment_to_loadingFragment"
+            app:destination="@id/loadingFragment"
             app:popUpTo="@+id/quizListFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -77,6 +105,10 @@
         tools:layout="@layout/fragment_quiz_result" >
         <action
             android:id="@+id/action_quizResultFragment_to_resultListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/resultListFragment" />
     </fragment>
     <fragment
@@ -86,6 +118,10 @@
         tools:layout="@layout/fragment_result_list" >
         <action
             android:id="@+id/action_resultListFragment_to_resultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/resultFragment" />
     </fragment>
     <fragment
@@ -100,6 +136,27 @@
         tools:layout="@layout/fragment_name" >
         <action
             android:id="@+id/action_nameFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.mhmdreza.azmoonyar.views.LoadingFragment"
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_loading">
+        <action
+            android:id="@+id/action_loadingFragment_to_quizResultFragment"
+            app:destination="@id/quizResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/loadingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
