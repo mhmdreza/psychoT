@@ -26,7 +26,7 @@ private fun getDescription(): Spannable {
     return SpannableStringBuilder()
         .bold {
             append(
-                "معرفی\n"
+                "\n\nمعرفی\n"
             )
         }
         .append("این مقیاس دارای 21 عبارت است که برای ارزیابی 4 سبک فرزندپروری مستبدانه، بی\u200Cاعتنا، سهل\u200Cگیرانه و قاطعانه والدین طراحی و تهیه شده است.")
@@ -34,7 +34,8 @@ private fun getDescription(): Spannable {
             append(
                 "لطفا جملاتی که در ادامه می\u200Cآید را به دقت مطالعه کرده و مناسب\u200Cترین گزینه را انخاب نمایید.\n"
             )
-        }.toSpannable()
+        }.append("\n\n")
+        .toSpannable()
 }
 
 val questions2 = arrayListOf(

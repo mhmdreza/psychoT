@@ -2,19 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/tradeOffQuestionTitle"
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center_horizontal"
-        android:lines="3"
-        android:text="وقتی کودکم بدرفتاری می کند..."
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="125dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <TextView
+            android:id="@+id/tradeOffQuestionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:maxLines="3"
+            android:text="وقتی کودکم بدرفتاری می کند..."
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/lowScoreText"
@@ -39,7 +53,6 @@
             android:background="@drawable/trade_off_bg7"
             android:gravity="center"
             android:text="@string/seven"
-            android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:textColor="@android:color/white"
             android:textSize="24sp"
@@ -112,7 +125,6 @@
             android:gravity="center"
             android:text="@string/one"
             android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />

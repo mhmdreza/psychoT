@@ -2,6 +2,7 @@ package com.mhmdreza.azmoonyar.views
 
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import com.mhmdreza.azmoonyar.data.Quiz
 import com.mhmdreza.azmoonyar.data.QuizResult
 import com.mhmdreza.azmoonyar.data.quizes.FATHER
 import com.mhmdreza.azmoonyar.data.quizes.TRADEOFF
+import com.mhmdreza.azmoonyar.util.normalizeNumber
 import kotlinx.android.synthetic.main.agreement_level_4.*
 import kotlinx.android.synthetic.main.agreement_level_5.*
 import kotlinx.android.synthetic.main.fragment_quiz.*
@@ -178,7 +180,7 @@ class QuizFragment : Fragment() {
         questionTitle.text = question.questionTitle
         val loadAnimation = AnimationUtils.loadAnimation(view!!.context, R.anim.text_anim)
         questionTitle.startAnimation(loadAnimation)
-        questionNumber.text = "${questionNum + 1}/${quiz.questions.size}"
+        questionNumber.text = "${questionNum + 1}/${quiz.questions.size}".normalizeNumber()
         updateProgressBar()
         val extra = question.extra
         if (extra.isNotEmpty()) {

@@ -7,12 +7,12 @@ import java.util.*
 
 fun normalizeTime(time: Long): CharSequence? {
     val jc = JalaliCalendar(Date(time))
-    return normalizeNumber("${jc.day} ${jc.monthString} ${jc.year}")
+    return "${jc.day} ${jc.monthString} ${jc.year}".normalizeNumber()
 }
 
-fun normalizeNumber(input: String): String {
+fun String.normalizeNumber(): String {
     var result = ""
-    input.forEach {
+    this.forEach {
         result += when (it) {
             '0' -> '۰'
             '1' -> '۱'

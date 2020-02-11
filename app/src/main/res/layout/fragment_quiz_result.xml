@@ -9,13 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="72dp">
 
-        <ImageView
+<!--        <ImageView-->
+<!--            android:id="@+id/exitButton"-->
+<!--            android:layout_width="14dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:src="@drawable/ic_home" />-->
+
+        <TextView
             android:id="@+id/exitButton"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:text="خانه"
+            android:drawablePadding="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_alignTop="@id/title"
+            android:layout_alignBottom="@id/title"
             android:layout_centerVertical="true"
+            android:drawableStart="@drawable/ic_home"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_exit" />
+            android:src="@drawable/ic_home" />
 
 
         <ImageView
@@ -37,20 +52,26 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/quiz_result"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
-            android:layout_height="21dp"
+            android:layout_height="23dp"
             android:layout_below="@+id/title"
             android:layout_marginEnd="8dp"
             android:layout_toStartOf="@id/answerIcon"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/shadow_top" />
 
     <ScrollView
         android:layout_marginTop="88dp"

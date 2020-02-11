@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.SharedPref
+import ir.pec.mpl.pecpayment.view.PaymentInitiator
 import kotlinx.android.synthetic.main.fragment_name.*
 
 /**
@@ -32,6 +33,7 @@ class NameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         nameEditText.requestFocus()
+
         submit.setOnClickListener {
             val text = nameEditText.text.toString()
             if (text.isNotEmpty()) {
