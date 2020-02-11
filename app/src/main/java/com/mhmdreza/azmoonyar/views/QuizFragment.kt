@@ -86,7 +86,7 @@ class QuizFragment : Fragment() {
             }
         }
         quizResult = QuizResult(System.currentTimeMillis(), quiz.id)
-        progressBar.max = quiz.questions.size.toFloat()
+        progressBar.max = (quiz.questions.size * 100).toFloat()
         setOnClickListeners()
         showQuestion()
     }
@@ -195,8 +195,7 @@ class QuizFragment : Fragment() {
     }
 
     private fun updateProgressBar() {
-        progressBar.progress = (questionNum + 1).toFloat()
-        val animation = ObjectAnimator.ofInt(progressBar, "progress", questionNum, questionNum + 1)
+        val animation = ObjectAnimator.ofFloat(progressBar, "progress", (questionNum * 100).toFloat(), ((questionNum + 1) * 100).toFloat())
         animation.duration = 1000
         animation.interpolator = DecelerateInterpolator()
         animation.start()
