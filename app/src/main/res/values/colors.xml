@@ -19,4 +19,5 @@
     <color name="tradeoff_7">#8A20FF</color>
     <color name="purple_stroke">#4B3677</color>
     <color name="disableColor">#1D1D1D</color>
+    <color name="seekbarColor">#FED351</color>
 </resources>
