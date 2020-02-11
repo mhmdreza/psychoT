@@ -9,7 +9,7 @@ public class ApplicationLoader extends Application {
     public void onCreate() {
         super.onCreate();
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/IranianSans.ttf")
+                .setDefaultFontPath("fonts/IRANSansMobile_Light.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

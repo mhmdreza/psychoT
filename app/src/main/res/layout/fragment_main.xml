@@ -73,19 +73,16 @@
         android:text="@string/main_description"
         android:textSize="16sp" />
 
-    <carbon.widget.FrameLayout
+    <FrameLayout
             android:id="@+id/quizListLayout"
             android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:carbon_cornerRadius="2dp"
-        app:carbon_elevation="8dp"
-        app:carbon_elevationShadowColor="@color/colorPrimary"
         android:layout_marginEnd="16dp"
             android:background="@drawable/quiz_background">
 
-            <carbon.widget.View
+            <View
                 android:layout_width="82dp"
                 android:layout_height="46dp"
                 android:layout_gravity="start|top"
@@ -93,14 +90,14 @@
                 android:layout_marginTop="5dp"
                 android:background="@mipmap/item_card_dots" />
 
-            <carbon.widget.ImageView
+            <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginEnd="24dp"
                 android:src="@drawable/ic_question_mark_white_48" />
 
-            <carbon.widget.LinearLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
@@ -108,7 +105,7 @@
                 android:gravity="end"
                 android:orientation="vertical">
 
-                <carbon.widget.TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
                     android:text="آزمون‌ها"
@@ -117,7 +114,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <carbon.widget.TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="21dp"
                     android:layout_marginTop="2dp"
@@ -126,9 +123,9 @@
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
 
-            </carbon.widget.LinearLayout>
+            </LinearLayout>
 
-            <carbon.widget.ImageView
+            <ImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_gravity="bottom|start"
@@ -136,28 +133,25 @@
                 android:tint="@android:color/white"
                 android:layout_marginBottom="16dp"
                 android:src="@drawable/ic_back" />
-    </carbon.widget.FrameLayout>
+    </FrameLayout>
 
-    <carbon.widget.FrameLayout
+    <FrameLayout
         android:id="@+id/resultListLayout"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:carbon_cornerRadius="2dp"
-        app:carbon_elevation="8dp"
-        app:carbon_elevationShadowColor="@color/result_background"
         android:background="@drawable/result_background">
 
-        <carbon.widget.ImageView
+        <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="24dp"
             android:src="@drawable/ic_pie_chart_white_48" />
 
-        <carbon.widget.View
+        <View
             android:layout_width="82dp"
             android:layout_height="46dp"
             android:layout_gravity="start|top"
@@ -165,7 +159,7 @@
             android:layout_marginTop="5dp"
             android:background="@mipmap/item_card_dots" />
 
-        <carbon.widget.LinearLayout
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
@@ -173,7 +167,7 @@
             android:gravity="end"
             android:orientation="vertical">
 
-            <carbon.widget.TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:text="نتایج آزمون‌ها"
@@ -182,7 +176,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <carbon.widget.TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="21dp"
                 android:layout_marginTop="2dp"
@@ -192,9 +186,9 @@
                 android:textSize="12sp" />
 
 
-        </carbon.widget.LinearLayout>
+        </LinearLayout>
 
-        <carbon.widget.ImageView
+        <ImageView
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_gravity="bottom|start"
@@ -202,6 +196,6 @@
             android:layout_marginBottom="16dp"
             android:tint="@android:color/white"
             android:src="@drawable/ic_back" />
-    </carbon.widget.FrameLayout>
+    </FrameLayout>
 
 </LinearLayout>
