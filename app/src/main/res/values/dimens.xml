@@ -5,4 +5,9 @@
     <dimen name="agreeL5">58dp</dimen>
     <dimen name="agreeL4">72dp</dimen>
     <dimen name="tradeOff">40dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="image_width">180dp</dimen>
+    <dimen name="image_small_width">160dp</dimen>
 </resources>

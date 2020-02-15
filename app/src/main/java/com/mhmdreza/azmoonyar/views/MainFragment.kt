@@ -41,6 +41,6 @@ class MainFragment : Fragment() {
     }
 
     private fun navigateToInfoFragment() {
-        navController.navigate(R.id.action_mainFragment_to_infoFragment)
+        navController.navigate(R.id.action_mainFragment_to_infoFragment2)
     }
 }

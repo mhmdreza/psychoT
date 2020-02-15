@@ -34,18 +34,24 @@
         android:name="com.mhmdreza.azmoonyar.views.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
+
+    <fragment
+        android:id="@+id/infoFragment2"
+        android:name="com.mhmdreza.azmoonyar.views.InfoFragment2"
+        android:label="fragment_info2"
+        tools:layout="@layout/fragment_info_2" />
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.mhmdreza.azmoonyar.views.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_infoFragment"
+            android:id="@+id/action_mainFragment_to_infoFragment2"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment2" />
         <action
             android:id="@+id/action_mainFragment_to_quizListFragment"
             app:enterAnim="@anim/slide_in_right"
