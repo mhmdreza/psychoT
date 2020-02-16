@@ -2,6 +2,7 @@ package com.mhmdreza.azmoonyar
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -33,5 +34,12 @@ open class MainActivity : AppCompatActivity() {
             activity.window.statusBarColor = Color.WHITE
         }
     }
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        if (requestCode == 1) {
+//            val type = intent?.extras?.get("Type") as String?
+//        }
+//        super.onActivityResult(requestCode, resultCode, data)
+//    }
 
 }

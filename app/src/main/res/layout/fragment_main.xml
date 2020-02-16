@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@mipmap/item_background_general"
     tools:context=".views.MainFragment">
@@ -197,5 +196,11 @@
             android:tint="@android:color/white"
             android:src="@drawable/ic_back" />
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="payment"/>
 
 </LinearLayout>
