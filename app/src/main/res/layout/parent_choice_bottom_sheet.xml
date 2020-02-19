@@ -41,16 +41,18 @@
                 android:id="@+id/motherImage"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/ic_father_purple_64"/>
+                android:layout_gravity="center_horizontal|top"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/ic_father_grey_64" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="22sp"
-                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="12dp"
                 android:text="@string/mother"
-                android:layout_gravity="end|center_vertical"/>
+                android:layout_gravity="bottom|center_horizontal"/>
         </FrameLayout>
 
         <FrameLayout
@@ -63,17 +65,20 @@
             <ImageView
                 android:id="@+id/fatherImage"
                 android:layout_width="64dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_height="64dp"
+                android:layout_marginTop="11dp"
                 android:background="@drawable/ic_father_purple_64"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="22sp"
-                android:textColor="@color/colorPrimary"
+                android:layout_gravity="bottom|center_horizontal"
                 android:text="@string/father"
-                android:layout_gravity="end|center_vertical"/>
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="12dp" />
         </FrameLayout>
 
     </LinearLayout>
