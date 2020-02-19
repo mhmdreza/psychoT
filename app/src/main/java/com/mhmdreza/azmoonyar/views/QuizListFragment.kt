@@ -98,7 +98,7 @@ class QuizListFragment : Fragment() {
     class QuizViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val navController by lazy { Navigation.findNavController(itemView) }
 
-        private var isMotherSelected = false
+        private var isMotherSelected = true
         private var isFatherSelected = true
 
         fun bind(quiz: Quiz) {

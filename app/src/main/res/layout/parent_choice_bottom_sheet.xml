@@ -35,7 +35,7 @@
             android:layout_width="160dp"
             android:layout_height="120dp"
             android:id="@+id/mother"
-            android:background="@drawable/parent_choice_bg_unselected">
+            android:background="@drawable/parent_choice_bg">
 
             <ImageView
                 android:id="@+id/motherImage"
@@ -43,7 +43,7 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginTop="11dp"
-                android:src="@drawable/ic_father_grey_64" />
+                android:src="@drawable/ic_mother_purple_64" />
 
             <TextView
                 android:layout_width="wrap_content"
