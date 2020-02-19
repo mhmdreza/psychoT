@@ -1,10 +1,10 @@
 package com.mhmdreza.azmoonyar;
 
-import android.app.Application;
+import androidx.multidex.MultiDexApplication;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
-public class ApplicationLoader extends Application {
+public class ApplicationLoader extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
