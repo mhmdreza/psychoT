@@ -48,9 +48,12 @@ fun calculateQuizResultText(quizResult: QuizResult): String{
             getQuiz5Result(quizResult.answerList)
         }
         5 ->{
-            getQuiz7Result(quizResult.answerList)
+            getQuiz6Result(quizResult.answerList)
         }
         6 ->{
+            getQuiz7Result(quizResult.answerList)
+        }
+        7 ->{
             getQuiz8Result(quizResult.answerList)
         }
         8 ->{

@@ -2,7 +2,6 @@ package com.mhmdreza.azmoonyar.views
 
 
 import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +39,12 @@ class QuizFragment : Fragment() {
     private lateinit var questionTitle: TextView
     private var questionNum = 0
     private lateinit var quizResult: QuizResult
+    private var isFatherSelected = false
+    private var isMotherSelected = false
+    private var parentNum = 0
+    private var parentAnswer = 0
+
+    private val loadAnimation by lazy { AnimationUtils.loadAnimation(view!!.context, R.anim.text_anim) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,9 +68,21 @@ class QuizFragment : Fragment() {
                 return@setOnClickListener
             }
             questionNum--
+            parentAnswer = 0
+            setParentalGuide(R.string.fatherQuestion)
             showQuestion()
         }
         if (arguments == null) return
+
+        isFatherSelected = arguments!!.getBoolean(IS_FATHER_SELECTED)
+        isMotherSelected = arguments!!.getBoolean(IS_MOTHER_SELECTED)
+        parentNum = if (isFatherSelected != isMotherSelected) 1 else if (isMotherSelected) 2 else 0
+        if (parentNum == 1) {
+            val strId = if (isFatherSelected) R.string.fatherQuestion else R.string.motherQuestion
+            setParentalGuide(strId)
+        } else if (parentNum == 2){
+            setParentalGuide(R.string.fatherQuestion)
+        }
         quiz = arguments!!.getSerializable(QUIZ_KEY) as Quiz
         when (quiz.type) {
             AnswerType.TRADE_OFF -> {
@@ -91,6 +108,11 @@ class QuizFragment : Fragment() {
         progressBar.max = (quiz.questions.size * 100).toFloat()
         setOnClickListeners()
         showQuestion()
+    }
+
+    private fun setParentalGuide(strId: Int) {
+        whichParentQuestion.text = resources.getText(strId)
+        whichParentQuestion.startAnimation(loadAnimation)
     }
 
     private fun setOnClickListeners() {
@@ -149,6 +171,27 @@ class QuizFragment : Fragment() {
                     addNewQuizResult(answer, isQuestionSolved, extra[0])
                 else addNewQuizResult(answer, isQuestionSolved)
             }
+            AnswerType.PARENT_CHOICE -> {
+                when {
+                    parentNum == 0 -> return
+                    parentNum == 1 -> addNewQuizResult(
+                        answer,
+                        isQuestionSolved,
+                        if (isFatherSelected) "f" else "m"
+                    )
+                    parentAnswer == 0 -> {
+                        parentAnswer = answer * 10
+                        setParentalGuide(R.string.motherQuestion)
+                        return
+                    }
+                    else -> {
+                        parentAnswer += answer
+                        setParentalGuide(R.string.fatherQuestion)
+                        addNewQuizResult(parentAnswer, isQuestionSolved, "fm")
+                        parentAnswer = 0
+                    }
+                }
+            }
             else -> {
                 addNewQuizResult(answer, isQuestionSolved)
             }
@@ -178,7 +221,6 @@ class QuizFragment : Fragment() {
         if (questionNum >= quiz.questions.size) return
         val question = quiz.questions[questionNum]
         questionTitle.text = question.questionTitle
-        val loadAnimation = AnimationUtils.loadAnimation(view!!.context, R.anim.text_anim)
         questionTitle.startAnimation(loadAnimation)
         questionNumber.text = "${questionNum + 1}/${quiz.questions.size}".normalizeNumber()
         updateProgressBar()

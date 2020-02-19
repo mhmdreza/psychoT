@@ -7,6 +7,19 @@
     android:orientation="vertical">
 
 
+    <TextView
+        android:id="@+id/whichParentQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:lines="2"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="125dp"
@@ -36,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
         <FrameLayout
@@ -44,7 +57,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/parent_opt_bg1">
 
@@ -74,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/parent_opt_bg2">
 
@@ -104,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/parent_opt_bg3">
 
@@ -134,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/parent_opt_bg4">
 
@@ -164,7 +176,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/parent_opt_bg5">
 
@@ -194,7 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/parent_opt_bg6">
 

@@ -71,7 +71,9 @@
         <TextView
             android:id="@+id/quizResultTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:textSize="20sp" />
     </ScrollView>
 
 

@@ -1,24 +1,30 @@
 package com.mhmdreza.azmoonyar.views
 
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.DataProvider
 import com.mhmdreza.azmoonyar.data.Quiz
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
+import kotlinx.android.synthetic.main.parent_choice_bottom_sheet.view.*
 import kotlinx.android.synthetic.main.quiz_list_item.view.*
 
+
 const val QUIZ_KEY = "QUIZ_KEY"
+const val IS_MOTHER_SELECTED = "IS_MOTHER_SELECTED"
+const val IS_FATHER_SELECTED = "IS_FATHER_SELECTED"
+const val YOUNG_ID = 5
 
 class QuizListFragment : Fragment() {
 
@@ -92,13 +98,75 @@ class QuizListFragment : Fragment() {
     class QuizViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val navController by lazy { Navigation.findNavController(itemView) }
 
+        private var isMotherSelected = false
+        private var isFatherSelected = true
+
         fun bind(quiz: Quiz) {
             itemView.quizTitle.text = quiz.title
             itemView.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putSerializable(QUIZ_KEY, quiz)
+                if (quiz.id == YOUNG_ID) {
+                    openBottomSheet(it.context, quiz)
+                } else {
+                    navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
+                }
+            }
+        }
+
+        private fun openBottomSheet(context: Context, quiz: Quiz) {
+            val dialogView: View = LayoutInflater.from(context)
+                .inflate(R.layout.parent_choice_bottom_sheet, null)
+            val mother = dialogView.mother
+            val motherImage = dialogView.motherImage
+            val father = dialogView.father
+            val fatherImage = dialogView.fatherImage
+            mother.setOnClickListener {
+                mother.setBackgroundResource(
+                    if (isMotherSelected) {
+                        R.drawable.parent_choice_bg_unselected
+                    } else {
+                        R.drawable.parent_choice_bg
+                    }
+                )
+                motherImage.setImageResource(
+                    if (isMotherSelected) {
+                        R.drawable.ic_mother_grey_64
+                    } else {
+                        R.drawable.ic_mother_purple_64
+                    }
+                )
+                isMotherSelected = isMotherSelected.not()
+            }
+            father.setOnClickListener {
+                father.setBackgroundResource(
+                    if (isFatherSelected) {
+                        R.drawable.parent_choice_bg_unselected
+                    } else {
+                        R.drawable.parent_choice_bg
+                    }
+                )
+                fatherImage.setImageResource(
+                    if (isFatherSelected) {
+                        R.drawable.ic_father_grey_64
+                    } else {
+                        R.drawable.ic_father_purple_64
+                    }
+                )
+                isFatherSelected = isFatherSelected.not()
+            }
+            val dialog = BottomSheetDialog(context)
+            dialogView.parentSubmit.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putBoolean(IS_MOTHER_SELECTED, isMotherSelected)
+                    putBoolean(IS_FATHER_SELECTED, isFatherSelected)
+                    putSerializable(QUIZ_KEY, quiz)
+                }
+                dialog.dismiss()
                 navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
             }
+            dialog.setContentView(dialogView)
+            dialog.show()
         }
 
     }
