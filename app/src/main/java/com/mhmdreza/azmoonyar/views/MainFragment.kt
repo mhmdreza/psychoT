@@ -1,6 +1,6 @@
 package com.mhmdreza.azmoonyar.views
 
-
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.mhmdreza.azmoonyar.R
+import ir.pec.mpl.pecpayment.view.PaymentInitiator
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
@@ -36,6 +37,7 @@ class MainFragment : Fragment() {
         }
         infoButton.setOnClickListener { navigateToInfoFragment() }
         infoTextView.setOnClickListener { navigateToInfoFragment() }
+
 //        payment.setOnClickListener {
 //            val intent = Intent(activity!!, PaymentInitiator::class.java)
 //            intent.putExtra("Type", 1)
