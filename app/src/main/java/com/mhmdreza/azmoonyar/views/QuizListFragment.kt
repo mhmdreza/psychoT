@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -16,6 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.DataProvider
 import com.mhmdreza.azmoonyar.data.Quiz
+import com.mhmdreza.azmoonyar.util.normalizeNumber
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
 import kotlinx.android.synthetic.main.parent_choice_bottom_sheet.view.*
 import kotlinx.android.synthetic.main.quiz_list_item.view.*
@@ -103,12 +106,22 @@ class QuizListFragment : Fragment() {
 
         fun bind(quiz: Quiz) {
             itemView.quizTitle.text = quiz.title
+            if (quiz.price > 0) {
+                itemView.priceLayout.visibility = VISIBLE
+                itemView.freePrice.visibility = GONE
+                itemView.price.text = "${quiz.price}".normalizeNumber()
+            } else {
+                itemView.priceLayout.visibility = GONE
+                itemView.freePrice.visibility = VISIBLE
+            }
             itemView.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putSerializable(QUIZ_KEY, quiz)
                 if (quiz.id == YOUNG_ID) {
                     openBottomSheet(it.context, quiz)
-                } else {
+                } else if (quiz.price > 0) {
+                    openBottomSheet(it.context, quiz)
+                }else {
                     navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
                 }
             }

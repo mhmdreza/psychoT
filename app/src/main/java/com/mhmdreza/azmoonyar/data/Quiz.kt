@@ -8,5 +8,6 @@ class Quiz(
     val title: String,
     val description: Spannable,
     val type: AnswerType,
-    val questions: ArrayList<Question> = ArrayList()
+    val questions: ArrayList<Question> = ArrayList(),
+    val price: Int = 0
 ) : Serializable
