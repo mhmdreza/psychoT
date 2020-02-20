@@ -2,6 +2,10 @@ package com.mhmdreza.azmoonyar;
 
 import androidx.multidex.MultiDexApplication;
 
+import com.evernote.android.job.JobManager;
+import com.mhmdreza.azmoonyar.webservice.pref.WebservicePrefSetting;
+import com.mhmdreza.azmoonyar.logic.MyJobCreator;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class ApplicationLoader extends MultiDexApplication {
@@ -13,5 +17,10 @@ public class ApplicationLoader extends MultiDexApplication {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+
+        JobManager.create(this).addJobCreator(new MyJobCreator());
+
+        WebservicePrefSetting.Companion.getInstance(getApplicationContext());
+
     }
 }

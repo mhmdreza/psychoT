@@ -1,7 +1,9 @@
 package com.mhmdreza.azmoonyar.views
 
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +12,8 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,10 +22,16 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.DataProvider
 import com.mhmdreza.azmoonyar.data.Quiz
+import com.mhmdreza.azmoonyar.logic.job.OnPaymentJobSuccessEvent
+import com.mhmdreza.azmoonyar.logic.job.PaymentJob
 import com.mhmdreza.azmoonyar.util.normalizeNumber
+import ir.pec.mpl.pecpayment.view.PaymentInitiator
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
 import kotlinx.android.synthetic.main.parent_choice_bottom_sheet.view.*
 import kotlinx.android.synthetic.main.quiz_list_item.view.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
 const val QUIZ_KEY = "QUIZ_KEY"
@@ -39,6 +49,16 @@ class QuizListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_quiz_list, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -120,11 +140,20 @@ class QuizListFragment : Fragment() {
                 if (quiz.id == YOUNG_ID) {
                     openBottomSheet(it.context, quiz)
                 } else if (quiz.price > 0) {
-                    openBottomSheet(it.context, quiz)
+                    openPayment(it.context, quiz)
                 }else {
                     navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
                 }
             }
+        }
+
+        private fun openPayment(context: Context, quiz: Quiz) {
+            PaymentJob.schedule(10000)
+//            val intent = Intent(context, PaymentInitiator::class.java)
+//            intent.putExtra("Type", "1")
+//            intent.putExtra("Token", "Mqu1eow6W8n8t8ptdrk1")
+//            intent.putExtra("Amount", 10000)
+//            startActivityForResult(context as Activity, intent, 1, null)
         }
 
         private fun openBottomSheet(context: Context, quiz: Quiz) {
@@ -182,6 +211,11 @@ class QuizListFragment : Fragment() {
             dialog.show()
         }
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(event: OnPaymentJobSuccessEvent) {
+        Toast.makeText(context!!, "hoooooora", Toast.LENGTH_LONG).show()
     }
 
 }
