@@ -1,7 +1,6 @@
 package com.mhmdreza.azmoonyar.views
 
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -13,7 +12,6 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.DataProvider
 import com.mhmdreza.azmoonyar.data.Quiz
+import com.mhmdreza.azmoonyar.data.SharedPref
 import com.mhmdreza.azmoonyar.logic.job.OnPaymentJobSuccessEvent
 import com.mhmdreza.azmoonyar.logic.job.PaymentJob
 import com.mhmdreza.azmoonyar.util.normalizeNumber
@@ -59,6 +58,7 @@ class QuizListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this)
+        SharedPref.getInstance(context!!).removePayQuizId()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -139,7 +139,7 @@ class QuizListFragment : Fragment() {
                 bundle.putSerializable(QUIZ_KEY, quiz)
                 if (quiz.id == YOUNG_ID) {
                     openBottomSheet(it.context, quiz)
-                } else if (quiz.price > 0) {
+                } else if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
                     openPayment(it.context, quiz)
                 }else {
                     navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
@@ -148,6 +148,7 @@ class QuizListFragment : Fragment() {
         }
 
         private fun openPayment(context: Context, quiz: Quiz) {
+            SharedPref.getInstance(context).setPayQuizId(quiz.id)
             PaymentJob.schedule(10000)
         }
 
@@ -216,7 +217,21 @@ class QuizListFragment : Fragment() {
         val intent = Intent(context, PaymentInitiator::class.java)
         intent.putExtra("Type", "1")
         intent.putExtra("Token", token)
-        startActivityForResult(context as Activity, intent, 1, null)
+        startActivityForResult(intent, 1, null)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 1) {
+            if (resultCode == 1){
+                Toast.makeText(context!!, "پرداخت با موفقیت انجام شد.", Toast.LENGTH_LONG).show()
+                SharedPref.getInstance(context!!).setSuccessfulPayment()
+            } else {
+                Toast.makeText(context!!, "مشکلی در حین  پرداخت ایجاد شده است.", Toast.LENGTH_LONG).show()
+            }
+            SharedPref.getInstance(context!!).removePayQuizId()
+
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }
