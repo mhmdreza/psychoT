@@ -9,7 +9,7 @@ import kotlin.random.Random
 class PaymentRequest(
     @field:SerializedName("Amount") @Expose
     private val amount: Long,
-    @field:SerializedName("MobileNo ") @Expose
+    @field:SerializedName("MobileNo") @Expose
     private val MobileNo: Long = 9395472004,
     @field:SerializedName("PaymentType") @Expose
     private val PaymentType: Byte = 2,
