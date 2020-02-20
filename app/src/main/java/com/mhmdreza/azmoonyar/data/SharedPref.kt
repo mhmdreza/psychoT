@@ -8,6 +8,7 @@ import com.google.gson.Gson
 const val AZMOON_YAR_KEY = "AZMOON_YAR"
 const val QUIZ_RESULTS_KEY = "QUIZ_RESULTS_KEY"
 const val USERNAME_KEY = "USERNAME_KEY"
+const val QUIZ_ID_KEY = "QUIZ_ID_KEY"
 
 
 class SharedPref private constructor(private val x: Context) {

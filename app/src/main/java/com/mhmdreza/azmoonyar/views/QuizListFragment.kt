@@ -149,11 +149,6 @@ class QuizListFragment : Fragment() {
 
         private fun openPayment(context: Context, quiz: Quiz) {
             PaymentJob.schedule(10000)
-//            val intent = Intent(context, PaymentInitiator::class.java)
-//            intent.putExtra("Type", "1")
-//            intent.putExtra("Token", "Mqu1eow6W8n8t8ptdrk1")
-//            intent.putExtra("Amount", 10000)
-//            startActivityForResult(context as Activity, intent, 1, null)
         }
 
         private fun openBottomSheet(context: Context, quiz: Quiz) {
@@ -216,6 +211,12 @@ class QuizListFragment : Fragment() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onEvent(event: OnPaymentJobSuccessEvent) {
         Toast.makeText(context!!, "hoooooora", Toast.LENGTH_LONG).show()
+        val token = event.payment.data.message ?: return
+
+        val intent = Intent(context, PaymentInitiator::class.java)
+        intent.putExtra("Type", "1")
+        intent.putExtra("Token", token)
+        startActivityForResult(context as Activity, intent, 1, null)
     }
 
 }

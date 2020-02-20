@@ -19,7 +19,7 @@ class PaymentData(
     val token: Int?,
 
     @field: SerializedName("ExpireDate") @Expose
-    val username: String?,
+    val expireDate: String?,
 
     @field: SerializedName("Status") @Expose
     val status: Int?,

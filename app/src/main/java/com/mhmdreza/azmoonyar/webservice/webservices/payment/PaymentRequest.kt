@@ -12,7 +12,7 @@ class PaymentRequest(
     @field:SerializedName("MobileNo ") @Expose
     private val MobileNo: Long = 9395472004,
     @field:SerializedName("PaymentType") @Expose
-    private val PaymentType: String = "2",
+    private val PaymentType: Byte = 2,
     @field:SerializedName("OrderId") @Expose
     private val OrderId: Long = Random(System.currentTimeMillis()).nextLong()
 ) : BaseRequest()

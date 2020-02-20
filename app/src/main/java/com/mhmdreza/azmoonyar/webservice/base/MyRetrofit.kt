@@ -31,12 +31,6 @@ object MyRetrofit {
         return retrofit.create(WebserviceUrls::class.java)
     }
 
-    private fun addLogginInterceptor(client: OkHttpClient.Builder) {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        client.addInterceptor(interceptor)
-    }
-
     private fun addAuthHeader(client: OkHttpClient.Builder) {
         if (WebservicePrefSetting.instanceWithoutContext.isRegister) {
             client.addInterceptor { chain ->
