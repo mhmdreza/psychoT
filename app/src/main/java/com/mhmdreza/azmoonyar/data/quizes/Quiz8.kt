@@ -17,7 +17,8 @@ fun getQuiz8(): Quiz {
         7,
         "مقياس شيوه فرزندپروري پارکر",
         getDescription(),
-        AnswerType.AGREEMENT_LEVEL_4
+        AnswerType.AGREEMENT_LEVEL_4,
+        price = 2000
     )
     motherQuestions.forEachIndexed { index, s ->
         quiz.questions.add(Question(index  +1, s, arrayListOf(MOTHER)))

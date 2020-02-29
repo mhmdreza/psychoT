@@ -1,6 +1,7 @@
 package com.mhmdreza.azmoonyar.views
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ class QuizResultFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_quiz_result, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments ?: return
@@ -33,7 +35,7 @@ class QuizResultFragment : Fragment() {
         if (!arguments!!.containsKey(QUIZ_RESULT) || arguments!!.getSerializable(QUIZ_RESULT) !is QuizResult) return
         val quizResult = arguments!!.getSerializable(QUIZ_RESULT) as QuizResult
         subtitle.text = normalizeTime(quizResult.time)
-        quizResultTextView.text = calculateQuizResultText(quizResult)
+        quizResultTextView.text = SharedPref.getInstance(context!!).getUsername() + " عزیز! \n" +calculateQuizResultText(quizResult)
         SharedPref.getInstance(view.context).addQuizResult(quizResult)
         exitButton.setOnClickListener {
             navController.popBackStack(R.id.mainFragment, false)

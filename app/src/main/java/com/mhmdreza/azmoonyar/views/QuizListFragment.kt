@@ -5,13 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.SearchView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -70,6 +70,10 @@ class QuizListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         quizListAdapter.replaceModelList(DataProvider.getInstance().quizList)
+
+        ((((searchView.getChildAt(0) as LinearLayout).getChildAt(2) as LinearLayout).getChildAt(1) as LinearLayout).getChildAt(0) as AutoCompleteTextView).textSize =
+            14f
+
 
         searchView.findViewById<View>(androidx.appcompat.R.id.search_plate).setBackgroundColor(Color.TRANSPARENT)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,

@@ -33,6 +33,7 @@ class StartQuizFragment : Fragment() {
         startQuiz.setOnClickListener {
             navController.navigate(R.id.action_startQuizFragment_to_quizFragment, arguments)
         }
+        toolbarTitle.isSelected = true
     }
 
 

@@ -32,7 +32,7 @@ object MyRetrofit {
     }
 
     private fun addAuthHeader(client: OkHttpClient.Builder) {
-        if (WebservicePrefSetting.instanceWithoutContext.isRegister) {
+//        if (WebservicePrefSetting.instanceWithoutContext.isRegister) {
             client.addInterceptor { chain ->
                 val original = chain.request()
                 val password = "info37|Mqu1eow6W8n8t8ptdrk1"
@@ -45,6 +45,6 @@ object MyRetrofit {
 
                 chain.proceed(request)
             }
-        }
+//        }
     }
 }

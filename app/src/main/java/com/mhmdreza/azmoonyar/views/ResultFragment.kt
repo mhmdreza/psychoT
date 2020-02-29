@@ -1,6 +1,7 @@
 package com.mhmdreza.azmoonyar.views
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.navigation.Navigation
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.DataProvider
 import com.mhmdreza.azmoonyar.data.QuizResult
+import com.mhmdreza.azmoonyar.data.SharedPref
 import com.mhmdreza.azmoonyar.util.calculateQuizResultText
 import com.mhmdreza.azmoonyar.util.normalizeTime
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
@@ -30,6 +32,7 @@ class ResultFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_result, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         exitButton.setOnClickListener { navController.popBackStack(R.id.mainFragment, false) }
@@ -40,7 +43,7 @@ class ResultFragment : Fragment() {
         val quizResult = arguments!![QUIZ_RESULT_KEY] as QuizResult
         title.text = DataProvider.getInstance().quizList[quizResult.quizId].title
         subtitle.text = normalizeTime(quizResult.time)
-        quizResultTextView.text = calculateQuizResultText(quizResult)
+        quizResultTextView.text = SharedPref.getInstance(context!!).getUsername() + " عزیز! \n" + calculateQuizResultText(quizResult)
     }
 
 

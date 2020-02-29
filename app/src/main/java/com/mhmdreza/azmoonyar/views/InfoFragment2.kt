@@ -11,17 +11,16 @@ import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_info_2.*
 import android.view.animation.AlphaAnimation
 import com.mhmdreza.azmoonyar.R
+import kotlinx.android.synthetic.main.fragment_info.*
+import kotlinx.android.synthetic.main.fragment_info_2.backIcon
+import kotlinx.android.synthetic.main.fragment_info_2.toolbar
+import kotlinx.android.synthetic.main.fragment_start_quiz.*
 import kotlin.math.abs
 
 
-open class InfoFragment2 : Fragment(), AppBarLayout.OnOffsetChangedListener {
+open class InfoFragment2 : Fragment() {
 
-    private val PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f
-    private val PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f
-    private val ALPHA_ANIMATIONS_DURATION = 200L
-
-    private var mIsTheTitleVisible = false
-    private var mIsTheTitleContainerVisible = true
+    private val navController by lazy { findNavController(view!!) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,68 +32,10 @@ open class InfoFragment2 : Fragment(), AppBarLayout.OnOffsetChangedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        backIcon.setOnClickListener{
+            activity?.onBackPressed()
+        }
         toolbar.title = ""
-        appbar.addOnOffsetChangedListener(this)
-
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
-//        startAlphaAnimation(textview_title, 0, View.INVISIBLE)
-
-//        imageview_placeholder.setImageResource(R.drawable.answer_bg1)
-
     }
-
-    override fun onOffsetChanged(appBarLayout: AppBarLayout, offset: Int) {
-//        val maxScroll = appBarLayout.totalScrollRange
-//        val percentage = abs(offset).toFloat() / maxScroll.toFloat()
-
-//        handleAlphaOnTitle(percentage)
-//        handleToolbarTitleVisibility(percentage)
-    }
-
-//    private fun handleAlphaOnTitle(percentage: Float) {
-//        if (percentage >= PERCENTAGE_TO_HIDE_TITLE_DETAILS) {
-//            if (mIsTheTitleContainerVisible) {
-//                startAlphaAnimation(linearlayout_title, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE)
-//                mIsTheTitleContainerVisible = false
-//            }
-//
-//        } else {
-//
-//            if (!mIsTheTitleContainerVisible) {
-//                startAlphaAnimation(linearlayout_title, ALPHA_ANIMATIONS_DURATION, View.VISIBLE)
-//                mIsTheTitleContainerVisible = true
-//            }
-//        }
-//    }
-
-//    private fun handleToolbarTitleVisibility(percentage: Float) {
-//        if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
-//
-//            if (!mIsTheTitleVisible) {
-//                startAlphaAnimation(toolbarTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE)
-//                mIsTheTitleVisible = true
-//            }
-//
-//        } else {
-//
-//            if (mIsTheTitleVisible) {
-//                startAlphaAnimation(toolbarTitle, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE)
-//                mIsTheTitleVisible = false
-//            }
-//        }
-//    }
-
-//
-//    private fun startAlphaAnimation(v: View, duration: Long, visibility: Int) {
-//        val alphaAnimation = if (visibility == View.VISIBLE)
-//            AlphaAnimation(0f, 1f)
-//        else
-//            AlphaAnimation(1f, 0f)
-//
-//        alphaAnimation.duration = duration
-//        alphaAnimation.fillAfter = true
-//        v.startAnimation(alphaAnimation)
-//    }
-
 }

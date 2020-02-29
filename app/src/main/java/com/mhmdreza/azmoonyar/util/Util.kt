@@ -30,7 +30,7 @@ fun String.normalizeNumber(): String {
     return result
 }
 
-fun calculateQuizResultText(quizResult: QuizResult): String{
+fun     calculateQuizResultText(quizResult: QuizResult): String{
     return when(quizResult.quizId){
         0 ->{
             getQuiz1Result(quizResult.answerList)

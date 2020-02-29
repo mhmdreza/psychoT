@@ -24,15 +24,17 @@
 
         <TextView
             android:id="@+id/toolbarTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_gravity="center"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:ellipsize="end"
+            android:ellipsize="marquee"
+            android:scrollHorizontally="true"
+            android:fadingEdge="horizontal"
             android:gravity="center"
-            android:maxLines="1"
+            android:singleLine="true"
             android:text="@string/app_name"
             android:textColor="@android:color/black" />
 
@@ -55,8 +57,9 @@
                 android:lineSpacingExtra="5dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:justificationMode="inter_word"
                 android:text="یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب یبسیب بی یبی بسیبی بسیب "
-                android:textSize="20sp" />
+                android:textSize="16sp" />
         </ScrollView>
 
         <View
@@ -75,7 +78,7 @@
             android:gravity="center"
             android:text="@string/startQuiz"
             android:textColor="@android:color/white"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
     </FrameLayout>
 

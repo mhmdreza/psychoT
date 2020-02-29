@@ -8,6 +8,6 @@
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="image_width">180dp</dimen>
-    <dimen name="image_small_width">160dp</dimen>
+    <dimen name="image_width">160dp</dimen>
+    <dimen name="image_small_width">140dp</dimen>
 </resources>

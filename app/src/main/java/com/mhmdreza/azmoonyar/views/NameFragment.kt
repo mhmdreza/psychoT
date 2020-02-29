@@ -4,6 +4,7 @@ package com.mhmdreza.azmoonyar.views
 import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.ResultReceiver
@@ -30,6 +31,7 @@ class NameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_name, container, false)
     }
@@ -65,6 +67,8 @@ class NameFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        nameLabel.setTypeface(nameLabel.typeface, Typeface.BOLD)
+        nameEditText.setTypeface(nameEditText.typeface, Typeface.BOLD)
         showSoftKeyboard(nameEditText)
         submit.setOnClickListener {
             val text = nameEditText.text.toString()

@@ -13,7 +13,7 @@ public class ApplicationLoader extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/IRANSansMobile_Light.ttf")
+                .setDefaultFontPath("fonts/IRANSans2.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

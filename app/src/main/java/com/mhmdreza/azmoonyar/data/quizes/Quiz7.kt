@@ -14,7 +14,8 @@ fun getQuiz7(): Quiz {
         6,
         "پرسشنامه والدگری آلاباما",
         getDescription(),
-        AnswerType.FREQUENCY_LEVEL
+        AnswerType.FREQUENCY_LEVEL,
+        price = 1000
     )
     questions7.forEachIndexed { index, s ->
         quiz.questions.add(Question(index + 1, s))

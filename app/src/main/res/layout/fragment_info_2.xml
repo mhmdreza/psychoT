@@ -41,6 +41,7 @@
                     android:layout_marginStart="50dp"
                     android:layout_marginEnd="50dp"
                     android:ellipsize="end"
+                    android:padding="8dp"
                     android:gravity="top|center"
                     android:maxLines="1"
                     android:text="@string/aboutAzmoonYar"
@@ -68,16 +69,29 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:scrollbars="none"
-            app:behavior_overlapTop="30dp"
             android:padding="12dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:text="@string/complete_description"
-                android:textSize="18sp" />
+                android:padding="12dp"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/gradient_background_up" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:justificationMode="inter_word"
+                    android:text="@string/complete_description"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
 
         </androidx.core.widget.NestedScrollView>
 

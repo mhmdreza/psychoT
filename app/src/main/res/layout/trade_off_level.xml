@@ -13,7 +13,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="5dp"
-        app:cardElevation="2dp">
+        app:cardElevation="6dp">
 
         <TextView
             android:id="@+id/tradeOffQuestionTitle"
@@ -25,7 +25,8 @@
             android:gravity="center"
             android:maxLines="3"
             android:text="وقتی کودکم بدرفتاری می کند..."
-            android:textSize="18sp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
@@ -36,8 +37,9 @@
         android:layout_height="65dp"
         android:gravity="center"
         android:paddingBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/disableColor"
         android:background="@drawable/item_bubble_border_grey"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -137,5 +139,6 @@
         android:paddingTop="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/disableColor"
         android:background="@drawable/item_bubble_border_grey_up"/>
 </LinearLayout>

@@ -14,8 +14,7 @@ fun getQuiz2(): Quiz {
         1,
         "مقیاس سبک تربیتی والدین",
         getDescription()
-        , AnswerType.AGREEMENT_LEVEL_5,
-        price = 2000
+        , AnswerType.AGREEMENT_LEVEL_5
     )
     questions2.forEachIndexed { index, s ->
         quiz.questions.add(Question(index + 1, s))

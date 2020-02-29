@@ -10,9 +10,9 @@ class PaymentRequest(
     @field:SerializedName("Amount") @Expose
     private val amount: Long,
     @field:SerializedName("MobileNo") @Expose
-    private val MobileNo: Long = 9395472004,
+    private val MobileNo: Long = 9150773830,
     @field:SerializedName("PaymentType") @Expose
-    private val PaymentType: Byte = 2,
+    private val PaymentType: Byte = 1,
     @field:SerializedName("OrderId") @Expose
-    private val OrderId: Long = Random(System.currentTimeMillis()).nextLong()
+    private val OrderId: Long = System.currentTimeMillis()
 ) : BaseRequest()

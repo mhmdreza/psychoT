@@ -27,7 +27,7 @@
         android:layout_marginEnd="16dp"
         android:layout_height="125dp"
         app:cardCornerRadius="5dp"
-        app:cardElevation="2dp">
+        app:cardElevation="6dp">
 
         <TextView
 
@@ -40,7 +40,8 @@
             android:gravity="center"
             android:maxLines="3"
             android:text="وقتی کودکم بدرفتاری می کند..."
-            android:textSize="18sp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
@@ -66,7 +67,9 @@
                 android:gravity="center"
                 android:lines="2"
                 android:text="موافقم"
-                android:textSize="18sp" />
+                android:textColor="@color/disableColor"
+
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/AL4four"
@@ -101,7 +104,9 @@
                 android:gravity="center"
                 android:lines="2"
                 android:text="تقریبا  موافقم"
-                android:textSize="18sp" />
+                android:textColor="@color/disableColor"
+
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/AL4three"
@@ -137,7 +142,9 @@
                 android:gravity="center"
                 android:lines="2"
                 android:text="مخالفم"
-                android:textSize="18sp" />
+                android:textColor="@color/disableColor"
+
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/AL4two"
@@ -173,7 +180,8 @@
                 android:gravity="center"
                 android:lines="2"
                 android:text="کاملا  مخالفم"
-                android:textSize="18sp" />
+                android:textColor="@color/disableColor"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/AL4one"

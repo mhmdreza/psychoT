@@ -37,9 +37,9 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler().postDelayed({
-            if (SharedPref.getInstance(context!!).getUsername().isNotEmpty()){
+            if (SharedPref.getInstance(context!!).getUsername().isNotEmpty()) {
                 navController.navigate(R.id.action_splashFragment_to_mainFragment)
-            }else navController.navigate(R.id.action_splashFragment_to_nameFragment)
+            } else navController.navigate(R.id.action_splashFragment_to_nameFragment)
         }, 2000)
     }
 }

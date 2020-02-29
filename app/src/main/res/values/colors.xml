@@ -21,4 +21,6 @@
     <color name="disableColor">#1D1D1D</color>
     <color name="seekbarColor">#FED351</color>
     <color name="transparent">#00000000</color>
+    <color name="semitrans">#B3FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>
