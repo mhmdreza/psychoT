@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -16,13 +15,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.DataProvider
 import com.mhmdreza.azmoonyar.data.Quiz
 import com.mhmdreza.azmoonyar.data.SharedPref
 import com.mhmdreza.azmoonyar.logic.job.OnPaymentJobSuccessEvent
-import com.mhmdreza.azmoonyar.logic.job.PaymentJob
 import com.mhmdreza.azmoonyar.util.normalizeNumber
 import ir.pec.mpl.pecpayment.view.PaymentInitiator
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
@@ -144,16 +143,31 @@ class QuizListFragment : Fragment() {
                 if (quiz.id == YOUNG_ID) {
                     openBottomSheet(it.context, quiz)
                 } else if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
-                    openPayment(it.context, quiz)
+                    openPayment(it.context, quiz, bundle)
                 }else {
                     navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
                 }
             }
         }
 
-        private fun openPayment(context: Context, quiz: Quiz) {
+        private fun openPayment(
+            context: Context,
+            quiz: Quiz,
+            bundle: Bundle
+        ) {
             SharedPref.getInstance(context).setPayQuizId(quiz.id)
-            PaymentJob.schedule(10000)
+            MaterialDialog(context).show {
+                title(text = "تست پرداخت درون برنامه ای")
+                message(text = "ارتباط با سرور پرداخت برقرار نمیباشد. میتوانید روال پرداخت درون برنامه ای را تست کنید")
+                positiveButton(text = "پرداخت موفق"){
+                    navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
+                }
+                negativeButton(text = "پرداخت ناموفق") {
+                    Toast.makeText(context, "پرداخت شما با مشکل همراه بود. لطفا دوباره تلاش کنید", Toast.LENGTH_SHORT).show()
+                }
+            }
+//            PaymentJob.schedule(10000)
+
         }
 
         private fun openBottomSheet(context: Context, quiz: Quiz) {
