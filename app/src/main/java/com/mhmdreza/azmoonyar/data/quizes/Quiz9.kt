@@ -1,10 +1,9 @@
 package com.mhmdreza.azmoonyar.data.quizes
 
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import androidx.core.text.bold
-import androidx.core.text.toSpannable
-import com.mhmdreza.azmoonyar.data.*
+import com.mhmdreza.azmoonyar.data.Answer
+import com.mhmdreza.azmoonyar.data.Question
+import com.mhmdreza.azmoonyar.data.Quiz
+import com.mhmdreza.azmoonyar.data.descriptionList
 
 const val TRADEOFF = "tradeoff"
 
@@ -206,20 +205,15 @@ fun getQuiz9Result(answerList: ArrayList<Answer>): String {
     secondScore /= second.size
     thirdScore /= third.size
     var result = ""
-    result += if (firstScore >= 3) {
-        "رفتار افراطی در اهمال کاری\n"
-    } else {
-        "رفتار مناسب در اهمال کاری\n"
+    val max = maxOf(firstScore, secondScore, thirdScore)
+    if (firstScore == max) {
+        result += "رفتار افراطی در اهمال کاری\n"
     }
-    result += if (secondScore >= 3) {
-        "رفتار افراطی در واکنش بیش از حد\n"
-    } else {
-        "رفتار مناسب در واکنش بیش از حد\n"
+    if (secondScore == max){
+        result +=  "رفتار افراطی در واکنش بیش از حد\n"
     }
-    result += if (thirdScore >= 3) {
-        "رفتار افراطی در پرگویی در کلام\n"
-    } else {
-        "رفتار مناسب در پرگویی در کلام\n"
+    if (thirdScore == max) {
+        result += "رفتار افراطی در پرگویی در کلام\n"
     }
     return result
 }
