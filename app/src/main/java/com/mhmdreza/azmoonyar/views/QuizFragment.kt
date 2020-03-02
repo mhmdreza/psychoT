@@ -15,9 +15,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.Answer
-import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Quiz
 import com.mhmdreza.azmoonyar.data.QuizResult
+import com.mhmdreza.azmoonyar.data.quizes.AnswerType
 import com.mhmdreza.azmoonyar.data.quizes.FATHER
 import com.mhmdreza.azmoonyar.data.quizes.TRADEOFF
 import com.mhmdreza.azmoonyar.util.normalizeNumber

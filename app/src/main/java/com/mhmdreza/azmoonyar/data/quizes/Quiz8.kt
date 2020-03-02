@@ -1,13 +1,10 @@
 package com.mhmdreza.azmoonyar.data.quizes
 
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import androidx.core.text.bold
-import androidx.core.text.toSpannable
 import com.mhmdreza.azmoonyar.data.Answer
-import com.mhmdreza.azmoonyar.data.AnswerType
 import com.mhmdreza.azmoonyar.data.Question
 import com.mhmdreza.azmoonyar.data.Quiz
+import com.mhmdreza.azmoonyar.data.descriptionList
+
 const val FATHER = "father"
 const val MOTHER = "mother"
 
@@ -16,7 +13,7 @@ fun getQuiz8(): Quiz {
     val quiz = Quiz(
         7,
         "مقياس شيوه فرزندپروري پارکر",
-        getDescription(),
+        descriptionList[7],
         AnswerType.AGREEMENT_LEVEL_4,
         price = 2000
     )
@@ -27,20 +24,6 @@ fun getQuiz8(): Quiz {
         quiz.questions.add(Question(index  +1, s, arrayListOf(FATHER)))
     }
     return quiz
-}
-
-private fun getDescription(): Spannable {
-    return SpannableStringBuilder()
-        .bold { append( "\n\nمعرفی\n") }
-        .append(
-            "مقياس شيوۀ فرزندپروري به منظور تصحيح برخي از محدويت\u200Cها و نقايص ابزار پيوند والديني ساخته شد. اين آزمون يك مقياس 15 عبارتی دربارۀ شیوه فرزندپروري نامطلوب است.\n" +
-                    "در این آزمون در واقع این نوجوانان هستند که سبک فرزندپروری والدین خود را مورد ارزیابی قرار می دهند.\n" +
-                    "\n" +
-                    "\n" +
-                    " آزمودني\u200Cها بايد با استفاده از يك مقياس ليكرت 4 درجه\u200Cاي (به هيچ وجه درست نيست=0، كمي درست= 1، تقريباً درست =2 و كاملاً درست=3) مشخص سازند كه عبارت مورد نظر تا چه حد معرف رفتار پدر يا مادر آنها در خلال 16 سال اول زندگي بوده است. مقياس شيوۀ فرزندپروري داراي دو فرم جداگانه (يكي مربوط به مادر و ديگري مربوط به پدر) است كه برحسب ماهيت پژوهش و هدف از اجراي آزمون مي\u200Cتوان از دو فرم يا تنها يكي از فرم\u200Cها استفاده كرد. اين آزمون داراي 3 زيرمقياس: بي\u200Cتفاوت  (6 عبارت)، كنترل مفرط (4 عبارت) و سوءاستفاده (بدرفتاري)  (5 عبارت) است.\n"
-        )
-        .append("\n\n")
-        .toSpannable()
 }
 
 val motherQuestions = arrayListOf(

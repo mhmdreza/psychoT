@@ -1,6 +1,7 @@
 package com.mhmdreza.azmoonyar.data
 
 import android.text.Spannable
+import com.mhmdreza.azmoonyar.data.quizes.AnswerType
 import java.io.Serializable
 
 class Quiz(
