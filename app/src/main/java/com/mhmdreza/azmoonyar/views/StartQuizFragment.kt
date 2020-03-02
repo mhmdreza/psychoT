@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.afollestad.materialdialogs.MaterialDialog
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.Quiz
 import kotlinx.android.synthetic.main.fragment_start_quiz.*

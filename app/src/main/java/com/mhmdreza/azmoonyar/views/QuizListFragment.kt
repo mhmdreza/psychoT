@@ -36,6 +36,7 @@ const val QUIZ_KEY = "QUIZ_KEY"
 const val IS_MOTHER_SELECTED = "IS_MOTHER_SELECTED"
 const val IS_FATHER_SELECTED = "IS_FATHER_SELECTED"
 const val YOUNG_ID = 5
+const val CHILD_ALABAMA_ID = 4
 
 class QuizListFragment : Fragment() {
 
@@ -70,11 +71,14 @@ class QuizListFragment : Fragment() {
 
         quizListAdapter.replaceModelList(DataProvider.getInstance().quizList)
 
-        ((((searchView.getChildAt(0) as LinearLayout).getChildAt(2) as LinearLayout).getChildAt(1) as LinearLayout).getChildAt(0) as AutoCompleteTextView).textSize =
+        ((((searchView.getChildAt(0) as LinearLayout).getChildAt(2) as LinearLayout).getChildAt(1) as LinearLayout).getChildAt(
+            0
+        ) as AutoCompleteTextView).textSize =
             14f
 
 
-        searchView.findViewById<View>(androidx.appcompat.R.id.search_plate).setBackgroundColor(Color.TRANSPARENT)
+        searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
+            .setBackgroundColor(Color.TRANSPARENT)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -84,7 +88,7 @@ class QuizListFragment : Fragment() {
             override fun onQueryTextChange(query: String?): Boolean {
                 val result = ArrayList<Quiz>()
                 for (quiz: Quiz in DataProvider.getInstance().quizList) {
-                    if (quiz.title.indexOf(query ?: "") >= 0){
+                    if (quiz.title.indexOf(query ?: "") >= 0) {
                         result.add(quiz)
                     }
                 }
@@ -137,15 +141,40 @@ class QuizListFragment : Fragment() {
                 itemView.priceLayout.visibility = GONE
                 itemView.freePrice.visibility = VISIBLE
             }
-            itemView.setOnClickListener {
+            itemView.setOnClickListener { it ->
                 val bundle = Bundle()
                 bundle.putSerializable(QUIZ_KEY, quiz)
                 if (quiz.id == YOUNG_ID) {
-                    openBottomSheet(it.context, quiz)
-                } else if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
+                    MaterialDialog(it.context).show {
+                        cornerRadius(12f)
+                        message(text = "این آزمون بایستی توسط فرزند پاسخ داده شود")
+                        positiveButton(text = "باشه، فهمیدم") {
+                            openBottomSheet(it.context, quiz)
+                        }
+                    }
+                } else if(quiz.id == CHILD_ALABAMA_ID){
+                    MaterialDialog(it.context).show {
+                        cornerRadius(12f)
+                        message(text = "این آزمون بایستی توسط فرزند پاسخ داده شود")
+                        positiveButton(text = "باشه، فهمیدم") {
+                            if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
+                                openPayment(it.context, quiz, bundle)
+                            } else {
+                                navController.navigate(
+                                    R.id.action_quizListFragment_to_startQuizFragment,
+                                    bundle
+                                )
+                            }
+                        }
+                    }
+                }
+                else if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
                     openPayment(it.context, quiz, bundle)
-                }else {
-                    navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
+                } else {
+                    navController.navigate(
+                        R.id.action_quizListFragment_to_startQuizFragment,
+                        bundle
+                    )
                 }
             }
         }
@@ -157,13 +186,21 @@ class QuizListFragment : Fragment() {
         ) {
             SharedPref.getInstance(context).setPayQuizId(quiz.id)
             MaterialDialog(context).show {
+                cornerRadius(12f)
                 title(text = "تست پرداخت درون برنامه ای")
                 message(text = "ارتباط با سرور پرداخت برقرار نمیباشد. میتوانید روال پرداخت درون برنامه ای را تست کنید")
-                positiveButton(text = "پرداخت موفق"){
-                    navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
+                positiveButton(text = "پرداخت موفق") {
+                    navController.navigate(
+                        R.id.action_quizListFragment_to_startQuizFragment,
+                        bundle
+                    )
                 }
                 negativeButton(text = "پرداخت ناموفق") {
-                    Toast.makeText(context, "پرداخت شما با مشکل همراه بود. لطفا دوباره تلاش کنید", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "پرداخت شما با مشکل همراه بود. لطفا دوباره تلاش کنید",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 //            PaymentJob.schedule(10000)
@@ -240,11 +277,12 @@ class QuizListFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 1) {
-            if (resultCode == 1){
+            if (resultCode == 1) {
                 Toast.makeText(context!!, "پرداخت با موفقیت انجام شد.", Toast.LENGTH_LONG).show()
                 SharedPref.getInstance(context!!).setSuccessfulPayment()
             } else {
-                Toast.makeText(context!!, "مشکلی در حین  پرداخت ایجاد شده است.", Toast.LENGTH_LONG).show()
+                Toast.makeText(context!!, "مشکلی در حین  پرداخت ایجاد شده است.", Toast.LENGTH_LONG)
+                    .show()
             }
             SharedPref.getInstance(context!!).removePayQuizId()
 
@@ -253,3 +291,5 @@ class QuizListFragment : Fragment() {
     }
 
 }
+
+

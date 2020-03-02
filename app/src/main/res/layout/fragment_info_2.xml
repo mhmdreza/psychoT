@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/splash_screen_background"
+    android:background="@drawable/splash_screen_background"
     tools:ignore="HardcodedText">
 
     <ImageView
@@ -107,7 +107,7 @@
             android:layout_width="@dimen/image_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@mipmap/item_pic_about_us"
+            android:src="@drawable/item_pic_about_us"
             app:layout_behavior=".views.ImageBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

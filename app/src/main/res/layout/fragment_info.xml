@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/splash_screen_background"
+    android:background="@drawable/splash_screen_background"
     tools:context=".views.InfoFragment">
 
 
@@ -48,7 +48,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="36dp"
         android:layout_marginBottom="30dp"
-        android:src="@mipmap/item_pic_about_us" />
+        android:src="@drawable/item_pic_about_us" />
 
     <View
         android:layout_width="match_parent"
