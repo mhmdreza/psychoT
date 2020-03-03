@@ -3,6 +3,8 @@ package com.mhmdreza.azmoonyar.views
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
@@ -11,9 +13,10 @@ import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.bold
+import androidx.core.text.toSpannable
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.afollestad.materialdialogs.MaterialDialog
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.Answer
 import com.mhmdreza.azmoonyar.data.Quiz
@@ -34,6 +37,17 @@ const val QUIZ_RESULT = "QUIZ_RESULT"
 
 class QuizFragment : Fragment() {
 
+    private val fatherQuestion = SpannableStringBuilder()
+        .append("عبارت زیر تا چه حد درباره رفتار ")
+            .bold { append("پدرتان" )}
+        .append(" با شما در خلال 16 سال اول زندگی\u200Cتان درست است؟")
+        .toSpannable()
+
+    private val motherQuestion = SpannableStringBuilder()
+        .append("عبارت زیر تا چه حد درباره رفتار ")
+            .bold { append("مادرتان" )}
+        .append(" با شما در خلال 16 سال اول زندگی\u200Cتان درست است؟")
+        .toSpannable()
     private val navController by lazy { Navigation.findNavController(view!!) }
 
     private lateinit var quiz: Quiz
@@ -70,7 +84,7 @@ class QuizFragment : Fragment() {
             }
             questionNum--
             parentAnswer = 0
-            setParentalGuide(R.string.fatherQuestion)
+            setParentalGuide(fatherQuestion)
             showQuestion()
         }
         if (arguments == null) return
@@ -79,10 +93,10 @@ class QuizFragment : Fragment() {
         isMotherSelected = arguments!!.getBoolean(IS_MOTHER_SELECTED)
         parentNum = if (isFatherSelected != isMotherSelected) 1 else if (isMotherSelected) 2 else 0
         if (parentNum == 1) {
-            val strId = if (isFatherSelected) R.string.fatherQuestion else R.string.motherQuestion
-            setParentalGuide(strId)
+            val spannable = if (isFatherSelected) fatherQuestion else motherQuestion
+            setParentalGuide(spannable)
         } else if (parentNum == 2){
-            setParentalGuide(R.string.fatherQuestion)
+            setParentalGuide(fatherQuestion)
         }
         quiz = arguments!!.getSerializable(QUIZ_KEY) as Quiz
         when (quiz.type) {
@@ -111,8 +125,8 @@ class QuizFragment : Fragment() {
         showQuestion()
     }
 
-    private fun setParentalGuide(strId: Int) {
-        whichParentQuestion.text = resources.getText(strId)
+    private fun setParentalGuide(spannable: Spannable) {
+        whichParentQuestion.text = spannable
         whichParentQuestion.startAnimation(loadAnimation)
     }
 
@@ -182,12 +196,12 @@ class QuizFragment : Fragment() {
                     )
                     parentAnswer == 0 -> {
                         parentAnswer = answer * 10
-                        setParentalGuide(R.string.motherQuestion)
+                        setParentalGuide(motherQuestion)
                         return
                     }
                     else -> {
                         parentAnswer += answer
-                        setParentalGuide(R.string.fatherQuestion)
+                        setParentalGuide(fatherQuestion)
                         addNewQuizResult(parentAnswer, isQuestionSolved, "fm")
                         parentAnswer = 0
                     }

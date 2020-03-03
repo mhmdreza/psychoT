@@ -147,16 +147,16 @@ class QuizListFragment : Fragment() {
                 if (quiz.id == YOUNG_ID) {
                     MaterialDialog(it.context).show {
                         cornerRadius(12f)
-                        message(text = "این آزمون بایستی توسط فرزند پاسخ داده شود")
-                        positiveButton(text = "باشه، فهمیدم") {
+                        message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
+                        positiveButton(text = "متوجه شدم") {
                             openBottomSheet(it.context, quiz)
                         }
                     }
                 } else if(quiz.id == CHILD_ALABAMA_ID){
                     MaterialDialog(it.context).show {
                         cornerRadius(12f)
-                        message(text = "این آزمون بایستی توسط فرزند پاسخ داده شود")
-                        positiveButton(text = "باشه، فهمیدم") {
+                        message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
+                        positiveButton(text = "متوجه شدم") {
                             if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
                                 openPayment(it.context, quiz, bundle)
                             } else {
@@ -250,6 +250,10 @@ class QuizListFragment : Fragment() {
             }
             val dialog = BottomSheetDialog(context)
             dialogView.parentSubmit.setOnClickListener {
+                if(!isFatherSelected && !isMotherSelected){
+                    Toast.makeText(it.context, "باید حداقل یک گزینه را انتخاب کنید.", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener
+                }
                 val bundle = Bundle().apply {
                     putBoolean(IS_MOTHER_SELECTED, isMotherSelected)
                     putBoolean(IS_FATHER_SELECTED, isFatherSelected)
