@@ -63,7 +63,7 @@ enum class QuizType(
     ),
     QUIZ3(
         2,
-        "پرسشنامه شيوه\u200Cهاي فرزندپروري بامريند",
+        "پرسشنامه شیوه\u200Cهای فرزندپروری بامریند",
         AnswerType.AGREEMENT_LEVEL_5,
         arrayListOf(
             FinalResult(
@@ -82,7 +82,7 @@ enum class QuizType(
     ),
     QUIZ4(
         3,
-        "پرسشنامه فرزندپروری آلاباما (فرم والدين)",
+        "پرسشنامه فرزندپروری آلاباما (فرم والدین)",
         AnswerType.FREQUENCY_LEVEL,
         arrayListOf(
             FinalResult(
@@ -98,11 +98,11 @@ enum class QuizType(
                 arrayListOf(3, 8, 12, 22, 25, 31)
             ),
             FinalResult(
-                "ضعف در نظارت و راهنمايي مناسب",
+                "ضعف در نظارت و راهنمایی مناسب",
                 arrayListOf(6, 10, 17, 19, 21, 24, 28, 29, 30, 32)
             ),
             FinalResult(
-                "بکاربردن تنبيه بدني",
+                "بکاربردن تنبیه بدنی",
                 arrayListOf(33, 35, 39)
             )
         )
@@ -129,11 +129,11 @@ enum class QuizType(
                 arrayListOf(4, 11, 17, 30, 34, 41)
             ),
             FinalResult(
-                "ضعف در نظارت و راهنمايي مناسب",
+                "ضعف در نظارت و راهنمایی مناسب",
                 arrayListOf(8, 14, 24, 26, 29, 33, 38, 39, 40, 42)
             ),
             FinalResult(
-                "بکاربردن تنبيه بدني",
+                "بکاربردن تنبیه بدنی",
                 arrayListOf(43, 45, 49)
             )
         )

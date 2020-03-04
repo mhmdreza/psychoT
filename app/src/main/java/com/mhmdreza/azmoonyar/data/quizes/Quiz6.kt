@@ -123,50 +123,50 @@ fun getQuiz6Result(answerList: ArrayList<Answer>): String {
             }
             42 -> {
                 if (fatherSum != 0) {
-                    result += "شما از لحاظ پدر مشکل معيارهاي سرسختانه " + (if (fatherSum > 28) "دارید" else "ندارید") + "\n"
+                    result += "شما از لحاظ پدر مشکل معیارهای سرسختانه " + (if (fatherSum > 28) "دارید" else "ندارید") + "\n"
                 }
                 if (motherSum != 0) {
-                    result += "شما از لحاظ مادر مشکل معيارهاي سرسختانه " + (if (motherSum > 28) "دارید" else "ندارید") + "\n"
+                    result += "شما از لحاظ مادر مشکل معیارهای سرسختانه " + (if (motherSum > 28) "دارید" else "ندارید") + "\n"
                 }
                 fatherSum = 0
                 motherSum = 0
             }
             46 -> {
                 if (fatherSum != 0) {
-                    result += " شما از لحاظ پدر مشکل استحقاق/ بزرگ منشي " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ پدر مشکل استحقاق/ بزرگ منشی " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 if (motherSum != 0) {
-                    result += " شما از لحاظ مادر مشکل استحقاق/ بزرگ منشي " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ مادر مشکل استحقاق/ بزرگ منشی " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 fatherSum = 0
                 motherSum = 0
             }
             50 -> {
                 if (fatherSum != 0) {
-                    result += " شما از لحاظ پدر مشکل خويشتنداري و خودانضباطي ناكافي " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ پدر مشکل خویشتنداری و خودانضباطی ناكافی " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 if (motherSum != 0) {
-                    result += " شما از لحاظ مادر مشکل خويشتنداري و خودانضباطي ناكافي " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ مادر مشکل خویشتنداری و خودانضباطی ناكافی " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 fatherSum = 0
                 motherSum = 0
             }
             71 -> {
                 if (fatherSum != 0) {
-                    result += " شما از لحاظ پدر مشکل  پذيرش جويي/ جلب توجه " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ پدر مشکل  پذیرش جویی/ جلب توجه " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 if (motherSum != 0) {
-                    result += " شما از لحاظ مادر مشکل  پذيرش جويي/ جلب توجه " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ مادر مشکل  پذیرش جویی/ جلب توجه " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 fatherSum = 0
                 motherSum = 0
             }
             58 -> {
                 if (fatherSum != 0) {
-                    result += " شما از لحاظ پدر مشکل منفي گرايي/ بدبيني " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ پدر مشکل منفی گرایی/ بدبینی " + (if (fatherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 if (motherSum != 0) {
-                    result += " شما از لحاظ مادر مشکل منفي گرايي/ بدبيني " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
+                    result += " شما از لحاظ مادر مشکل منفی گرایی/ بدبینی " + (if (motherSum > 16) "دارید" else "ندارید") + "\n"
                 }
                 fatherSum = 0
                 motherSum = 0
