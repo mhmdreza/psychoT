@@ -14,7 +14,7 @@ fun getQuiz9(): Quiz {
         "راهنمای مقیاس فرزندپروری آرنولد",
         descriptionList[8],
         AnswerType.TRADE_OFF,
-        price = 5000
+        price = 3000
     )
     questions9.forEachIndexed { index, arnoldModel ->
         quiz.questions.add(

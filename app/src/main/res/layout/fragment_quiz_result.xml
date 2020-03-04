@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,26 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="72dp">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/exitButton"-->
-<!--            android:layout_width="14dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:src="@drawable/ic_home" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/exitButton"-->
+        <!--            android:layout_width="14dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:src="@drawable/ic_home" />-->
 
         <TextView
             android:id="@+id/exitButton"
-            android:text="خانه"
-            android:drawablePadding="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="14sp"
             android:layout_centerVertical="true"
-            android:drawableStart="@drawable/ic_home"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_home" />
+            android:drawableStart="@drawable/ic_home"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:src="@drawable/ic_home"
+            android:text="خانه"
+            android:textSize="14sp" />
 
 
         <ImageView
@@ -49,8 +50,8 @@
             android:layout_toStartOf="@id/answerIcon"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/disableColor"
             android:text="@string/quiz_result"
+            android:textColor="@color/disableColor"
             android:textSize="16sp" />
 
         <TextView
@@ -58,8 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="23dp"
             android:layout_below="@+id/title"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_toStartOf="@id/answerIcon"
             android:ellipsize="end"
             android:maxLines="1"
@@ -74,19 +75,71 @@
         android:background="@drawable/shadow_top" />
 
     <ScrollView
-        android:layout_marginTop="88dp"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:layout_above="@id/descTextView"
+        android:layout_alignParentTop="true"
         android:layout_marginEnd="16dp">
 
-        <TextView
-                android:id="@+id/quizResultTextView"
-            android:layout_height="wrap_content"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:lineSpacingExtra="5dp"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="6dp">
+
+                <TextView
+                    android:id="@+id/quizResultTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:gravity="center"
+                    android:lines="3"
+                    android:maxLines="4"
+                    android:text="وقتی کودکم بدرفتاری می کند..."
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/quizDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="5dp"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
     </ScrollView>
 
+    <TextView
+        android:id="@+id/descTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/start_quiz_background"
+        android:gravity="center"
+        android:justificationMode="inter_word"
+        android:text="برای دریافت خدمات مشاوره و راهنمایی و اصلاح شیوه فرزندپروری خود می توانید به مرکز خدمات روان شناختی مونس مراجعه فرمایید.\n تلفن: 5-02177595234"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
 
-</FrameLayout>
+</RelativeLayout>

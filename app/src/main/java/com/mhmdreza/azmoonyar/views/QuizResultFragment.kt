@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.QuizResult
 import com.mhmdreza.azmoonyar.data.SharedPref
+import com.mhmdreza.azmoonyar.util.calculateQuizResult
 import com.mhmdreza.azmoonyar.util.calculateQuizResultText
 import com.mhmdreza.azmoonyar.util.normalizeTime
 import kotlinx.android.synthetic.main.fragment_quiz_result.*
@@ -36,6 +37,7 @@ class QuizResultFragment : Fragment() {
         val quizResult = arguments!!.getSerializable(QUIZ_RESULT) as QuizResult
         subtitle.text = normalizeTime(quizResult.time)
         quizResultTextView.text = SharedPref.getInstance(context!!).getUsername() + " عزیز! \n" +calculateQuizResultText(quizResult)
+        quizDescriptionTextView.text = calculateQuizResult(quizResult).description
         SharedPref.getInstance(view.context).addQuizResult(quizResult)
         exitButton.setOnClickListener {
             navController.popBackStack(R.id.mainFragment, false)
