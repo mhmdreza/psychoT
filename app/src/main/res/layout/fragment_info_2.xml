@@ -107,7 +107,7 @@
             android:layout_width="@dimen/image_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/item_pic_about_us"
+            android:src="@mipmap/item_pic_about_us"
             app:layout_behavior=".views.ImageBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
