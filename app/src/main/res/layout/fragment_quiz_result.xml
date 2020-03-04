@@ -137,6 +137,7 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/start_quiz_background"
         android:gravity="center"
+        android:visibility="gone"
         android:justificationMode="inter_word"
         android:text="برای دریافت خدمات مشاوره و راهنمایی و اصلاح شیوه فرزندپروری خود می توانید به مرکز خدمات روان شناختی مونس مراجعه فرمایید.\n تلفن: 5-02177595234"
         android:textColor="@android:color/white"

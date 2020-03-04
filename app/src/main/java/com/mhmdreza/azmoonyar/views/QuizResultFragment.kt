@@ -37,7 +37,9 @@ class QuizResultFragment : Fragment() {
         val quizResult = arguments!!.getSerializable(QUIZ_RESULT) as QuizResult
         subtitle.text = normalizeTime(quizResult.time)
         quizResultTextView.text = SharedPref.getInstance(context!!).getUsername() + " عزیز! \n" +calculateQuizResultText(quizResult)
-        quizDescriptionTextView.text = calculateQuizResult(quizResult).description
+        val result = calculateQuizResult(quizResult)
+        quizDescriptionTextView.text = result.description
+        if (result.isGood.not()) descTextView.visibility = View.VISIBLE
         SharedPref.getInstance(view.context).addQuizResult(quizResult)
         exitButton.setOnClickListener {
             navController.popBackStack(R.id.mainFragment, false)
