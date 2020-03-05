@@ -12,10 +12,18 @@ import com.mhmdreza.azmoonyar.R
 import com.mhmdreza.azmoonyar.data.DataProvider
 import com.mhmdreza.azmoonyar.data.QuizResult
 import com.mhmdreza.azmoonyar.data.SharedPref
+import com.mhmdreza.azmoonyar.util.calculateQuizResult
 import com.mhmdreza.azmoonyar.util.calculateQuizResultText
 import com.mhmdreza.azmoonyar.util.normalizeTime
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
+import kotlinx.android.synthetic.main.fragment_quiz_result.*
 import kotlinx.android.synthetic.main.fragment_result.*
+import kotlinx.android.synthetic.main.fragment_result.descTextView
+import kotlinx.android.synthetic.main.fragment_result.exitButton
+import kotlinx.android.synthetic.main.fragment_result.quizDescriptionTextView
+import kotlinx.android.synthetic.main.fragment_result.quizResultTextView
+import kotlinx.android.synthetic.main.fragment_result.subtitle
+import kotlinx.android.synthetic.main.fragment_result.title
 
 /**
  * A simple [Fragment] subclass.
@@ -43,6 +51,9 @@ class ResultFragment : Fragment() {
         val quizResult = arguments!![QUIZ_RESULT_KEY] as QuizResult
         title.text = DataProvider.getInstance().quizList[quizResult.quizId].title
         subtitle.text = normalizeTime(quizResult.time)
+        val result = calculateQuizResult(quizResult)
+        quizDescriptionTextView.text = result.description
+        if (result.isGood.not()) descTextView.visibility = View.VISIBLE
         quizResultTextView.text = SharedPref.getInstance(context!!).getUsername() + " عزیز! \n" + calculateQuizResultText(quizResult)
     }
 
