@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_height="125dp"
+        android:layout_height="180dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="6dp">
 
@@ -24,8 +24,8 @@
             android:layout_marginEnd="32dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:lines="3"
-            android:maxLines="4"
+            android:lines="4"
+            android:maxLines="5"
             android:text="وقتی کودکم بدرفتاری می کند..."
             android:textSize="16sp"
             android:textColor="@color/black"
@@ -120,7 +120,7 @@
                 android:lines="2"
                 android:textColor="@color/disableColor"
 
-                android:text="تقریبا موافقم"
+                android:text="تقریبا مخالفم"
                 android:textSize="16sp" />
 
             <TextView

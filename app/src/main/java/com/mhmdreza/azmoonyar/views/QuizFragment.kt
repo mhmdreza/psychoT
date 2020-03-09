@@ -99,14 +99,22 @@ class QuizFragment : Fragment() {
             setParentalGuide(fatherQuestion)
         }
         quiz = arguments!!.getSerializable(QUIZ_KEY) as Quiz
+
         when (quiz.type) {
             AnswerType.TRADE_OFF -> {
                 tradeOff.visibility = VISIBLE
             }
             AnswerType.AGREEMENT_LEVEL_4 -> {
-                agreementLevel4.visibility = VISIBLE
-                if (quiz.questions[0].extra.isNotEmpty()) {
-                    whichParent.visibility = VISIBLE
+                if (quiz.id == 7) {
+                    agreement_level_4_for_parker.visibility = VISIBLE
+                    if (quiz.questions[0].extra.isNotEmpty()) {
+                        whichParent.visibility = VISIBLE
+                    }
+                } else {
+                    agreementLevel4.visibility = VISIBLE
+                    if (quiz.questions[0].extra.isNotEmpty()) {
+                        whichParent.visibility = VISIBLE
+                    }
                 }
             }
             AnswerType.AGREEMENT_LEVEL_5 -> {

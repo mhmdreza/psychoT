@@ -59,6 +59,12 @@
             layout="@layout/agreement_level_4"
             android:visibility="gone" />
 
+
+        <include
+            android:id="@+id/agreement_level_4_for_parker"
+            layout="@layout/agreement_level_4_for_parker"
+            android:visibility="gone" />
+
         <include
             android:id="@+id/agreementLevel5"
             layout="@layout/agreement_level_5"

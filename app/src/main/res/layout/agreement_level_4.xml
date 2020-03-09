@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_height="125dp"
+        android:layout_height="180dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="6dp">
 
@@ -38,8 +38,8 @@
             android:layout_marginEnd="16dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:lines="3"
-            android:maxLines="4"
+            android:lines="4"
+            android:maxLines="5"
             android:text="وقتی کودکم بدرفتاری می کند..."
             android:textSize="16sp"
             android:textColor="@color/black"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:lines="2"
-                android:text="موافقم"
+                android:text="کاملا موافقم"
                 android:textColor="@color/disableColor"
 
                 android:textSize="16sp" />
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:lines="2"
-                android:text="تقریبا  موافقم"
+                android:text="موافقم"
                 android:textColor="@color/disableColor"
 
                 android:textSize="16sp" />

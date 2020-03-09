@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/whichParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:lines="2"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_height="180dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="6dp">
+
+        <TextView
+
+            android:id="@+id/al4QuestionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lines="4"
+            android:maxLines="5"
+            android:text="وقتی کودکم بدرفتاری می کند..."
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/agreeL4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="3"
+                android:text="کاملا درست"
+                android:textColor="@color/disableColor"
+
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/AL4four"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/answer_height"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/answer_bg4"
+                android:gravity="center"
+                android:text="@string/four"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="30dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="@dimen/agreeL4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="3"
+                android:text="تقریبا درست"
+                android:textColor="@color/disableColor"
+
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/AL4three"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/answer_height"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/answer_bg3"
+
+                android:gravity="center"
+                android:text="@string/three"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="30dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="@dimen/agreeL4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="3"
+                android:text="کمی درست"
+                android:textColor="@color/disableColor"
+
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/AL4two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/answer_height"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/answer_bg2"
+                android:gravity="center"
+                android:text="@string/two"
+
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="30dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="@dimen/agreeL4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="3"
+                android:text="کاملا نادرست"
+                android:textColor="@color/disableColor"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/AL4one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/answer_height"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/answer_bg1"
+                android:gravity="center"
+                android:text="@string/one"
+
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

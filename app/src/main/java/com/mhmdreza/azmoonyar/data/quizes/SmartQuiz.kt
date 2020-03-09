@@ -7,7 +7,7 @@ enum class AnswerType {
     AGREEMENT_LEVEL_5,
     TRADE_OFF,
     PARENT_CHOICE,
-    FREQUENCY_LEVEL
+    FREQUENCY_LEVEL,
 }
 
 data class FinalResult(
