@@ -45,6 +45,7 @@
             android:padding="9dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
+            android:visibility="gone"
             android:src="@drawable/baseline_pause_circle_outline_black_24"
             android:layout_gravity="center_vertical|end"/>
 

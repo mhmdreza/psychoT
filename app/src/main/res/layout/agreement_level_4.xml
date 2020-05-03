@@ -63,6 +63,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/fourthLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -100,6 +101,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/thirdLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -138,6 +140,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/secondLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -176,6 +179,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/firstLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

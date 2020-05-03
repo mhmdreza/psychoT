@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@mipmap/item_pic_about_us"
-            app:layout_behavior=".views.ImageBehavior" />
+            app:layout_behavior="ir.nilva.azmoonyar.views.ImageBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>

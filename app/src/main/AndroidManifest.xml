@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mhmdreza.azmoonyar">
+    package="ir.nilva.azmoonyar">
+
+    <uses-permission android:name="com.farsitel.bazaar.permission.PAY_THROUGH_BAZAAR" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".ApplicationLoader"
+        android:name="ir.nilva.azmoonyar.ApplicationLoader"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
@@ -15,7 +17,7 @@
         tools:replace="android:supportsRtl"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="ir.nilva.azmoonyar.MainActivity"
             android:configChanges="screenSize|orientation"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -26,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <service android:enabled="true" android:name=".BackgroundSoundService" />
+        <service android:enabled="true" android:name="ir.nilva.azmoonyar.BackgroundSoundService" />
 
     </application>
 

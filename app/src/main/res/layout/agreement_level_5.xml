@@ -20,14 +20,14 @@
             android:id="@+id/al5QuestionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:lines="4"
             android:maxLines="5"
             android:text="وقتی کودکم بدرفتاری می کند..."
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/black"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
