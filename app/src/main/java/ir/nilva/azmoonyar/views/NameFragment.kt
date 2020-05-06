@@ -74,7 +74,7 @@ class NameFragment : Fragment() {
             val text = nameEditText.text.toString()
             if (text.isNotEmpty()) {
                 hideKeyboardFrom(submit)
-                SharedPref.getInstance(view.context).setUsername(text)
+                SharedPref.getInstance().setUsername(text)
                 navController.navigate(R.id.action_nameFragment_to_mainFragment)
             } else {
                 Toast.makeText(view.context, "برای ورود، لازم است که نام خود را وارد کنید!", Toast.LENGTH_LONG).show()

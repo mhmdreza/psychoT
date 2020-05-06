@@ -28,8 +28,6 @@
             </intent-filter>
         </activity>
 
-        <service android:enabled="true" android:name="ir.nilva.azmoonyar.BackgroundSoundService" />
-
     </application>
 
 </manifest>

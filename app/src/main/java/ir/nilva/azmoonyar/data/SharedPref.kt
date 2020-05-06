@@ -3,8 +3,8 @@ package ir.nilva.azmoonyar.data
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.caverock.androidsvg.IntegerParser
 import com.google.gson.Gson
+import ir.nilva.azmoonyar.ApplicationLoader
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -67,7 +67,7 @@ class SharedPref private constructor(private val x: Context) {
         for (i in list.indices) {
             str.append(list[i]).append(",")
         }
-        pref.edit().putString("string", str.toString()).apply()
+        pref.edit().putString(PAID_QUIZ_KEY, str.toString()).apply()
 
     }
 
@@ -92,8 +92,8 @@ class SharedPref private constructor(private val x: Context) {
         private lateinit var singleton: SharedPref
 
         @Synchronized
-        fun getInstance(context: Context): SharedPref {
-            if (::singleton.isInitialized.not()) singleton = SharedPref(context)
+        fun getInstance(): SharedPref {
+            if (::singleton.isInitialized.not()) singleton = SharedPref(ApplicationLoader.context)
             return singleton
         }
     }

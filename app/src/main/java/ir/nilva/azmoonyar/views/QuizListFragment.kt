@@ -2,10 +2,8 @@ package ir.nilva.azmoonyar.views
 
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -27,9 +25,6 @@ import ir.nilva.azmoonyar.data.DataProvider
 import ir.nilva.azmoonyar.data.Quiz
 import ir.nilva.azmoonyar.data.SharedPref
 import ir.nilva.azmoonyar.logic.job.OnPaymentJobSuccessEvent
-import ir.nilva.azmoonyar.util.IabHelper
-import ir.nilva.azmoonyar.util.IabResult
-import ir.nilva.azmoonyar.util.Inventory
 import ir.nilva.azmoonyar.util.normalizeNumber
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
 import kotlinx.android.synthetic.main.parent_choice_bottom_sheet.view.*
@@ -66,12 +61,13 @@ class QuizListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this)
-        SharedPref.getInstance(context!!).removePayQuizId()
     }
+
+    lateinit var quizListAdapter: QuizListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val quizListAdapter = QuizListAdapter()
+        quizListAdapter = QuizListAdapter()
 
         backIcon.setOnClickListener { navController.popBackStack(R.id.mainFragment, false) }
         recyclerView.adapter = quizListAdapter
@@ -135,6 +131,10 @@ class QuizListFragment : Fragment() {
 
     }
 
+    fun refresh(){
+        quizListAdapter.notifyDataSetChanged()
+    }
+
     inner class QuizViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val navController by lazy { Navigation.findNavController(itemView) }
 
@@ -144,9 +144,15 @@ class QuizListFragment : Fragment() {
         fun bind(quiz: Quiz) {
             itemView.quizTitle.text = quiz.title
             if (quiz.price > 0) {
-                itemView.priceLayout.visibility = VISIBLE
-                itemView.freePrice.visibility = GONE
-                itemView.price.text = "${quiz.price}".normalizeNumber()
+                if (SharedPref.getInstance().hasPaid(quiz.id)){
+                    itemView.priceLayout.visibility = GONE
+                    itemView.freePrice.visibility = VISIBLE
+                    itemView.freePrice.text = ""
+                } else {
+                    itemView.priceLayout.visibility = VISIBLE
+                    itemView.freePrice.visibility = GONE
+                    itemView.price.text = "${quiz.price}".normalizeNumber()
+                }
             } else {
                 itemView.priceLayout.visibility = GONE
                 itemView.freePrice.visibility = VISIBLE
@@ -155,30 +161,43 @@ class QuizListFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putSerializable(QUIZ_KEY, quiz)
                 if (quiz.id == YOUNG_ID) {
-                    MaterialDialog(it.context).show {
-                        cornerRadius(12f)
-                        message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
-                        positiveButton(text = "متوجه شدم") {
-                            openBottomSheet(it.context, quiz)
+                    if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
+                        (activity as MainActivity).openPayment(quiz) {
+                            refresh()
+                        }
+                    } else {
+                        MaterialDialog(it.context).show {
+                            cornerRadius(12f)
+                            message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
+                            positiveButton(text = "متوجه شدم") {
+                                openBottomSheet(it.context, quiz)
+                            }
                         }
                     }
+
                 } else if (quiz.id == CHILD_ALABAMA_ID) {
-                    MaterialDialog(it.context).show {
-                        cornerRadius(12f)
-                        message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
-                        positiveButton(text = "متوجه شدم") {
-                            if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
-                                (activity as MainActivity).openPayment(it.context, quiz, bundle)
-                            } else {
+                    if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
+                        (activity as MainActivity).openPayment(quiz) {
+                            refresh()
+                        }
+                    } else {
+                        MaterialDialog(it.context).show {
+                            cornerRadius(12f)
+                            message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
+                            positiveButton(text = "متوجه شدم") {
                                 navController.navigate(
                                     R.id.action_quizListFragment_to_startQuizFragment,
                                     bundle
                                 )
                             }
                         }
+
                     }
-                } else if (quiz.price > 0 && SharedPref.getInstance(it.context).hasPaid(quiz.id).not()) {
-                    (activity as MainActivity).openPayment(it.context, quiz, bundle)
+
+                } else if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
+                    (activity as MainActivity).openPayment(quiz) {
+                        refresh()
+                    }
                 } else {
                     navController.navigate(
                         R.id.action_quizListFragment_to_startQuizFragment,
@@ -188,7 +207,11 @@ class QuizListFragment : Fragment() {
             }
         }
 
-        private fun openBottomSheet(context: Context, quiz: Quiz) {
+
+        private fun openBottomSheet(
+            context: Context,
+            quiz: Quiz
+        ) {
             val dialogView: View = LayoutInflater.from(context)
                 .inflate(R.layout.parent_choice_bottom_sheet, null)
             val mother = dialogView.mother
@@ -245,7 +268,11 @@ class QuizListFragment : Fragment() {
                     putSerializable(QUIZ_KEY, quiz)
                 }
                 dialog.dismiss()
-                navController.navigate(R.id.action_quizListFragment_to_startQuizFragment, bundle)
+                navController.navigate(
+                    R.id.action_quizListFragment_to_startQuizFragment,
+                    bundle
+                )
+
             }
             dialog.setContentView(dialogView)
             dialog.show()

@@ -48,13 +48,13 @@ class ResultListFragment : Fragment() {
     }
 
     private fun showPrefData(view: View) {
-        val quizResults = SharedPref.getInstance(view.context).getQuizResults()
+        val quizResults = SharedPref.getInstance().getQuizResults()
         if (quizResults.isEmpty()) return
     }
 
     inner class QuizResultAdapter(private val context: Context) :
         RecyclerView.Adapter<QuizResultViewHolder>() {
-        private val quizResults = SharedPref.getInstance(context).getQuizResults()
+        private val quizResults = SharedPref.getInstance().getQuizResults()
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuizResultViewHolder {
             return QuizResultViewHolder(

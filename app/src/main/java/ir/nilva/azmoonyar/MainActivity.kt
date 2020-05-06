@@ -12,8 +12,6 @@ import android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
-import ir.nilva.azmoonyar.R
 import ir.nilva.azmoonyar.data.Quiz
 import ir.nilva.azmoonyar.data.SharedPref
 import ir.nilva.azmoonyar.util.IabHelper
@@ -76,24 +74,21 @@ open class MainActivity : AppCompatActivity() {
                     "پرداخت شما با مشکل همراه بود. لطفا دوباره تلاش کنید",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else if (purchase.sku == SKU_PREMIUM) {
-                Navigation.findNavController(view!!).navigate(
-                    R.id.action_quizListFragment_to_startQuizFragment,
-                    lastBundle
-                )
+            } else {
+                SharedPref.getInstance().setSuccessfulPayment()
+                paymentFinished()
             }
 
         }
 
-    private var lastBundle: Bundle? = null
+    lateinit var paymentFinished : () -> Unit
 
     fun openPayment(
-        context: Context,
         quiz: Quiz,
-        bundle: Bundle
+        paymentFinished: () -> Unit
     ) {
-        SharedPref.getInstance(context).setPayQuizId(quiz.id)
-        lastBundle = bundle
+        this.paymentFinished = paymentFinished
+        SharedPref.getInstance().setPayQuizId(quiz.id)
         mHelper?.launchPurchaseFlow(
             this,
             "quiz_id_${quiz.id}",

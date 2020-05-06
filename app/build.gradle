@@ -8,8 +8,8 @@ android {
         applicationId "ir.nilva.azmoonyar"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 200
+        versionName "2.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -26,7 +26,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

@@ -15,9 +15,6 @@ import ir.nilva.azmoonyar.data.SharedPref
 import ir.nilva.azmoonyar.util.calculateQuizResult
 import ir.nilva.azmoonyar.util.calculateQuizResultText
 import ir.nilva.azmoonyar.util.normalizeTime
-import kotlinx.android.synthetic.main.fragment_quiz_list.*
-import kotlinx.android.synthetic.main.fragment_quiz_result.*
-import kotlinx.android.synthetic.main.fragment_result.*
 import kotlinx.android.synthetic.main.fragment_result.descTextView
 import kotlinx.android.synthetic.main.fragment_result.exitButton
 import kotlinx.android.synthetic.main.fragment_result.quizDescriptionTextView
@@ -54,7 +51,7 @@ class ResultFragment : Fragment() {
         val result = calculateQuizResult(quizResult)
         quizDescriptionTextView.text = result.description
         if (result.isGood.not()) descTextView.visibility = View.VISIBLE
-        quizResultTextView.text = SharedPref.getInstance(context!!).getUsername() + " عزیز! \n" + calculateQuizResultText(quizResult)
+        quizResultTextView.text = SharedPref.getInstance().getUsername() + " عزیز! \n" + calculateQuizResultText(quizResult)
     }
 
 
