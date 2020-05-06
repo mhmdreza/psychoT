@@ -24,15 +24,10 @@ import ir.nilva.azmoonyar.R
 import ir.nilva.azmoonyar.data.DataProvider
 import ir.nilva.azmoonyar.data.Quiz
 import ir.nilva.azmoonyar.data.SharedPref
-import ir.nilva.azmoonyar.logic.job.OnPaymentJobSuccessEvent
 import ir.nilva.azmoonyar.util.normalizeNumber
 import kotlinx.android.synthetic.main.fragment_quiz_list.*
 import kotlinx.android.synthetic.main.parent_choice_bottom_sheet.view.*
 import kotlinx.android.synthetic.main.quiz_list_item.view.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
-
 
 const val QUIZ_KEY = "QUIZ_KEY"
 const val IS_MOTHER_SELECTED = "IS_MOTHER_SELECTED"
@@ -51,16 +46,6 @@ class QuizListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_quiz_list, container, false)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        EventBus.getDefault().unregister(this)
     }
 
     lateinit var quizListAdapter: QuizListAdapter
@@ -280,16 +265,6 @@ class QuizListFragment : Fragment() {
 
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEvent(event: OnPaymentJobSuccessEvent) {
-        Toast.makeText(context!!, "hoooooora", Toast.LENGTH_LONG).show()
-//        val token = event.payment.data.message ?: return
-//
-//        val intent = Intent(context, PaymentInitiator::class.java)
-//        intent.putExtra("Type", "1")
-//        intent.putExtra("Token", token)
-//        startActivityForResult(intent, 1, null)
-    }
 
 }
 
