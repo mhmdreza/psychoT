@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.afollestad.materialdialogs.MaterialDialog
+import ir.nilva.azmoonyar.MainActivity
 import ir.nilva.azmoonyar.R
 import ir.nilva.azmoonyar.data.Quiz
+import ir.nilva.azmoonyar.data.SharedPref
 import kotlinx.android.synthetic.main.fragment_start_quiz.*
 
 class StartQuizFragment : Fragment() {
@@ -32,9 +34,19 @@ class StartQuizFragment : Fragment() {
         toolbarTitle.text = quiz.title
         quizDescription.text = quiz.description
         startQuiz.setOnClickListener {
-            navController.navigate(R.id.action_startQuizFragment_to_quizFragment, arguments)
+            if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
+                startPayment(quiz)
+            } else {
+                navController.navigate(R.id.action_startQuizFragment_to_quizFragment, arguments)
+            }
         }
         toolbarTitle.isSelected = true
+        (activity as MainActivity).view = this.view
+
+    }
+
+    private fun startPayment(quiz: Quiz) {
+        (activity as MainActivity).openPayment(quiz) {}
     }
 
 

@@ -86,7 +86,6 @@ class QuizListFragment : Fragment() {
             }
         })
 
-        (activity as MainActivity).view = this.view
     }
 
     inner class QuizListAdapter : RecyclerView.Adapter<QuizViewHolder>() {
@@ -116,12 +115,11 @@ class QuizListFragment : Fragment() {
 
     }
 
-    fun refresh(){
+    fun refresh() {
         quizListAdapter.notifyDataSetChanged()
     }
 
     inner class QuizViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val navController by lazy { Navigation.findNavController(itemView) }
 
         private var isMotherSelected = true
         private var isFatherSelected = true
@@ -129,7 +127,7 @@ class QuizListFragment : Fragment() {
         fun bind(quiz: Quiz) {
             itemView.quizTitle.text = quiz.title
             if (quiz.price > 0) {
-                if (SharedPref.getInstance().hasPaid(quiz.id)){
+                if (SharedPref.getInstance().hasPaid(quiz.id)) {
                     itemView.priceLayout.visibility = GONE
                     itemView.freePrice.visibility = VISIBLE
                     itemView.freePrice.text = ""
@@ -143,51 +141,32 @@ class QuizListFragment : Fragment() {
                 itemView.freePrice.visibility = VISIBLE
             }
             itemView.setOnClickListener { it ->
-                val bundle = Bundle()
-                bundle.putSerializable(QUIZ_KEY, quiz)
-                if (quiz.id == YOUNG_ID) {
-                    if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
-                        (activity as MainActivity).openPayment(quiz) {
-                            refresh()
-                        }
-                    } else {
-                        MaterialDialog(it.context).show {
-                            cornerRadius(12f)
-                            message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
-                            positiveButton(text = "متوجه شدم") {
-                                openBottomSheet(it.context, quiz)
+//                if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
+//                    startPayment(quiz)
+//                } else {
+                    when (quiz.id) {
+                        YOUNG_ID -> {
+                            MaterialDialog(it.context).show {
+                                cornerRadius(12f)
+                                message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
+                                positiveButton(text = "متوجه شدم") {
+                                    openBottomSheet(it.context, quiz)
+                                }
                             }
                         }
-                    }
-
-                } else if (quiz.id == CHILD_ALABAMA_ID) {
-                    if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
-                        (activity as MainActivity).openPayment(quiz) {
-                            refresh()
-                        }
-                    } else {
-                        MaterialDialog(it.context).show {
-                            cornerRadius(12f)
-                            message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
-                            positiveButton(text = "متوجه شدم") {
-                                navController.navigate(
-                                    R.id.action_quizListFragment_to_startQuizFragment,
-                                    bundle
-                                )
+                        CHILD_ALABAMA_ID -> {
+                            MaterialDialog(it.context).show {
+                                cornerRadius(12f)
+                                message(text = "این آزمون باید توسط فرزند پاسخ داده شود")
+                                positiveButton(text = "متوجه شدم") {
+                                    startQuiz(quiz)
+                                }
                             }
                         }
-
-                    }
-
-                } else if (quiz.price > 0 && SharedPref.getInstance().hasPaid(quiz.id).not()) {
-                    (activity as MainActivity).openPayment(quiz) {
-                        refresh()
-                    }
-                } else {
-                    navController.navigate(
-                        R.id.action_quizListFragment_to_startQuizFragment,
-                        bundle
-                    )
+                        else -> {
+                            startQuiz(quiz)
+                        }
+//                    }
                 }
             }
         }
@@ -253,10 +232,7 @@ class QuizListFragment : Fragment() {
                     putSerializable(QUIZ_KEY, quiz)
                 }
                 dialog.dismiss()
-                navController.navigate(
-                    R.id.action_quizListFragment_to_startQuizFragment,
-                    bundle
-                )
+                startQuiz(bundle)
 
             }
             dialog.setContentView(dialogView)
@@ -265,6 +241,27 @@ class QuizListFragment : Fragment() {
 
     }
 
+    private fun startPayment(quiz: Quiz) {
+        (activity as MainActivity).openPayment(quiz) {
+            refresh()
+        }
+    }
+
+    private fun startQuiz(quiz: Quiz) {
+        val bundle = Bundle()
+        bundle.putSerializable(QUIZ_KEY, quiz)
+        navController.navigate(
+            R.id.action_quizListFragment_to_startQuizFragment,
+            bundle
+        )
+    }
+
+    private fun startQuiz(bundle: Bundle) {
+        navController.navigate(
+            R.id.action_quizListFragment_to_startQuizFragment,
+            bundle
+        )
+    }
 
 }
 
