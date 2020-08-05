@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="ir.nilva.azmoonyar.MainActivity"
-            android:configChanges="screenSize|orientation"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

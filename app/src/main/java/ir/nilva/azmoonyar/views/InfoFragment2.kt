@@ -1,6 +1,7 @@
 package ir.nilva.azmoonyar.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,5 +38,9 @@ open class InfoFragment2 : Fragment() {
         }
         toolbar.title = ""
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        view.setOnTouchListener { _, motionEvent ->
+            Log.e("TAG", "" + motionEvent.x + " : " + motionEvent.y)
+            false
+        }
     }
 }

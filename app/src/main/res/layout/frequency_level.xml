@@ -52,7 +52,7 @@
                 android:lines="2"
                 android:text="همیشه"
                 android:textColor="@color/disableColor"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/fiveFreq"
@@ -86,7 +86,7 @@
                 android:lines="2"
                 android:text="اغلب اوقات"
                 android:textColor="@color/disableColor"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/fourFreq"
@@ -120,7 +120,7 @@
                 android:lines="2"
                 android:text="گاهی اوقات"
                 android:textColor="@color/disableColor"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/threeFreq"
@@ -153,9 +153,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:lines="2"
-                android:text="تقریبا هیچ‌وقت"
+                android:text="تقریبا\nهیچ‌وقت"
                 android:textColor="@color/disableColor"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/twoFreq"
@@ -190,7 +190,7 @@
                 android:lines="2"
                 android:textColor="@color/disableColor"
                 android:text="هرگز"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/oneFreq"
