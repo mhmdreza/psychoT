@@ -48,7 +48,19 @@ val fatherQuestions = motherQuestions
 
 
 
-fun getQuiz8Result(answerList: ArrayList<Answer>): String {
+fun getQuiz8Result(answerList: ArrayList<Answer>): FinalResult {
+    val sumOfAnswers = answerList.sumBy { it.answer }
+    if (sumOfAnswers == getBadResult(
+            AnswerType.AGREEMENT_LEVEL_4,
+            answerList.size
+        ) || sumOfAnswers == answerList.size
+    ) {
+        return FinalResult(
+            text = "نتیجه آزمون اعتباری ندارد",
+            description = "لطفا دوباره و با دقت به سوالات آزمون پاسخ دهید",
+            targetQuestions = emptyList()
+        )
+    }
     var firstScore = 0f
     var secondScore = 0f
     var thirdScore = 0f
@@ -109,7 +121,7 @@ fun getQuiz8Result(answerList: ArrayList<Answer>): String {
     } else {
         "پدر شما افراطی نیست\n"
     }
-    return result
+    return FinalResult(result, emptyList())
 }
 
 private val first = arrayListOf(5,8,10,11,12,13) //1.	بی تفاوت

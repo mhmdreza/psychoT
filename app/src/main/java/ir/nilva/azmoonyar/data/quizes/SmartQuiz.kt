@@ -221,6 +221,19 @@ fun getQuiz(quizType: QuizType): Quiz {
 
 
 fun getQuizResult(quizType: QuizType, answerList: ArrayList<Answer>): FinalResult {
+    val sumOfAnswers = answerList.sumBy { it.answer }
+    if (sumOfAnswers == getBadResult(
+            quizType.answerType,
+            answerList.size
+        ) || sumOfAnswers == answerList.size
+    ) {
+        return FinalResult(
+            text = "نتیجه آزمون اعتباری ندارد",
+            description = "لطفا دوباره و با دقت به سوالات آزمون پاسخ دهید",
+            targetQuestions = emptyList(),
+            isGood = true
+        )
+    }
     val finalAnswers = quizType.finalResults
     val scores = Array(finalAnswers.size) { 0 }
     finalAnswers.forEachIndexed { index, finalAnswer ->
@@ -232,4 +245,14 @@ fun getQuizResult(quizType: QuizType, answerList: ArrayList<Answer>): FinalResul
         scores[index] /= finalAnswer.targetQuestions.size
     }
     return finalAnswers[scores.indices.maxBy { scores[it] } ?: 0]
+}
+
+fun getBadResult(answerType: AnswerType, answersCount: Int): Int {
+    return answersCount * when (answerType) {
+        AnswerType.AGREEMENT_LEVEL_4 -> 4
+        AnswerType.AGREEMENT_LEVEL_5 -> 5
+        AnswerType.TRADE_OFF -> 7
+        AnswerType.PARENT_CHOICE -> 6
+        AnswerType.FREQUENCY_LEVEL -> 5
+    }
 }

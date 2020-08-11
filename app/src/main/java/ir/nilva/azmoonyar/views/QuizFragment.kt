@@ -2,7 +2,9 @@ package ir.nilva.azmoonyar.views
 
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.os.Bundle
+import android.os.PowerManager
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
@@ -290,5 +292,18 @@ class QuizFragment : Fragment() {
         animation.interpolator = DecelerateInterpolator()
         animation.start()
         progressBar.clearAnimation()
+    }
+
+    private var wakeLock: PowerManager.WakeLock? = null
+    override fun onResume() {
+        super.onResume()
+        val powerManager = activity?.getSystemService(Context.POWER_SERVICE) as? PowerManager?
+        wakeLock = powerManager?.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "AzmoonYar: Quiz")
+        wakeLock?.acquire(10 * 60 * 1000)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        wakeLock?.release()
     }
 }

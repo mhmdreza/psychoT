@@ -30,74 +30,37 @@ fun String.normalizeNumber(): String {
     return result
 }
 
-fun calculateQuizResultText(quizResult: QuizResult): String{
-    return when(quizResult.quizId){
-        0 ->{
-            getQuizResult(QuizType.QUIZ1, quizResult.answerList).text
-        }
-        1 ->{
-            getQuizResult(QuizType.QUIZ2, quizResult.answerList).text
-        }
-        2 ->{
-            getQuizResult(QuizType.QUIZ3, quizResult.answerList).text
-        }
-        3 ->{
-            getQuizResult(QuizType.QUIZ4, quizResult.answerList).text
-        }
-        4 ->{
-            getQuizResult(QuizType.QUIZ5, quizResult.answerList).text
-        }
-        5 ->{
-            getQuiz6Result(quizResult.answerList)
-        }
-        6 ->{
-            getQuizResult(QuizType.QUIZ7, quizResult.answerList).text
-        }
-        7 ->{
-            getQuiz8Result(quizResult.answerList)
-        }
-        8 ->{
-            getQuiz9Result(quizResult.answerList)
-        }
-        else ->{
-            "very good"
-        }
-    }
-}
 
-
-fun calculateQuizResult(quizResult: QuizResult): FinalResult{
-    return when(quizResult.quizId){
-        0 ->{
+fun calculateQuizResult(quizResult: QuizResult): FinalResult {
+    return when (quizResult.quizId) {
+        0 -> {
             getQuizResult(QuizType.QUIZ1, quizResult.answerList)
         }
-        1 ->{
+        1 -> {
             getQuizResult(QuizType.QUIZ2, quizResult.answerList)
         }
-        2 ->{
+        2 -> {
             getQuizResult(QuizType.QUIZ3, quizResult.answerList)
         }
-        3 ->{
+        3 -> {
             getQuizResult(QuizType.QUIZ4, quizResult.answerList)
         }
-        4 ->{
+        4 -> {
             getQuizResult(QuizType.QUIZ5, quizResult.answerList)
         }
-//        5 ->{
-//            getQuiz6Result(quizResult.answerList)
-//        }
-        6 ->{
+        5 -> {
+            getQuiz6Result(quizResult.answerList)
+        }
+        6 -> {
             getQuizResult(QuizType.QUIZ7, quizResult.answerList)
         }
+        7 -> {
+            getQuiz8Result(quizResult.answerList)
+        }
+        8 -> {
+            getQuiz9Result(quizResult.answerList)
+        }
         else -> FinalResult("", emptyList())
-//        7 ->{
-//            getQuiz8Result(quizResult.answerList)
-//        }
-//        8 ->{
-//            getQuiz9Result(quizResult.answerList)
-//        }
-//        else ->{
-//            "very good"
-//        }
+
     }
 }

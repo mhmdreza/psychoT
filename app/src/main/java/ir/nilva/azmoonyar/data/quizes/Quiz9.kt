@@ -183,7 +183,19 @@ val questions9 = arrayListOf(
 class ArnoldModel(val title: String, val startRange: String, val endRange: String)
 
 
-fun getQuiz9Result(answerList: ArrayList<Answer>): String {
+fun getQuiz9Result(answerList: ArrayList<Answer>): FinalResult {
+    val sumOfAnswers = answerList.sumBy { it.answer }
+    if (sumOfAnswers == getBadResult(
+            AnswerType.TRADE_OFF,
+            answerList.size
+        ) || sumOfAnswers == answerList.size
+    ) {
+        return FinalResult(
+            text = "نتیجه آزمون اعتباری ندارد",
+            description = "لطفا دوباره و با دقت به سوالات آزمون پاسخ دهید",
+            targetQuestions = emptyList()
+        )
+    }
     var firstScore = 0f
     var secondScore = 0f
     var thirdScore = 0f
@@ -215,7 +227,7 @@ fun getQuiz9Result(answerList: ArrayList<Answer>): String {
     if (thirdScore == max) {
         result += "رفتار افراطی در پرگویی در کلام\n"
     }
-    return result
+    return FinalResult(result, emptyList())
 }
 
 private val first = arrayListOf(7, 8, 12, 15, 16, 19, 20, 21, 24, 26, 30) //1.	اهمال کاری

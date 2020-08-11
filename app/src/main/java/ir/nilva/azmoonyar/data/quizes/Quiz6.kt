@@ -2,7 +2,19 @@ package ir.nilva.azmoonyar.data.quizes
 
 import ir.nilva.azmoonyar.data.Answer
 
-fun getQuiz6Result(answerList: ArrayList<Answer>): String {
+fun getQuiz6Result(answerList: ArrayList<Answer>): FinalResult {
+    val sumOfAnswers = answerList.sumBy { it.answer }
+    if (sumOfAnswers == getBadResult(
+            AnswerType.PARENT_CHOICE,
+            answerList.size
+        ) || sumOfAnswers == answerList.size
+    ) {
+        return FinalResult(
+            text = "نتیجه آزمون اعتباری ندارد",
+            description = "لطفا دوباره و با دقت به سوالات آزمون پاسخ دهید",
+            targetQuestions = emptyList()
+        )
+    }
     var result = ""
     var fatherSum = 0
     var motherSum = 0
@@ -183,7 +195,7 @@ fun getQuiz6Result(answerList: ArrayList<Answer>): String {
             }
         }
     }
-    return result
+    return FinalResult(result, emptyList())
 }
 
 fun parseAnswer(it: Answer): ParentAnswer {

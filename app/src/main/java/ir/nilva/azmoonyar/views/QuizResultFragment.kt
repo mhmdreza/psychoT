@@ -12,7 +12,6 @@ import ir.nilva.azmoonyar.R
 import ir.nilva.azmoonyar.data.QuizResult
 import ir.nilva.azmoonyar.data.SharedPref
 import ir.nilva.azmoonyar.util.calculateQuizResult
-import ir.nilva.azmoonyar.util.calculateQuizResultText
 import ir.nilva.azmoonyar.util.normalizeTime
 import kotlinx.android.synthetic.main.fragment_quiz_result.*
 
@@ -36,7 +35,7 @@ class QuizResultFragment : Fragment() {
         if (!arguments!!.containsKey(QUIZ_RESULT) || arguments!!.getSerializable(QUIZ_RESULT) !is QuizResult) return
         val quizResult = arguments!!.getSerializable(QUIZ_RESULT) as QuizResult
         subtitle.text = normalizeTime(quizResult.time)
-        quizResultTextView.text = SharedPref.getInstance().getUsername() + " عزیز! \n" +calculateQuizResultText(quizResult)
+        quizResultTextView.text = SharedPref.getInstance().getUsername() + " عزیز! \n" + calculateQuizResult(quizResult).text
         val result = calculateQuizResult(quizResult)
         quizDescriptionTextView.text = result.description
         if (result.isGood.not()) descTextView.visibility = View.VISIBLE
