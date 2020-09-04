@@ -185,10 +185,12 @@ class ArnoldModel(val title: String, val startRange: String, val endRange: Strin
 
 fun getQuiz9Result(answerList: ArrayList<Answer>): FinalResult {
     val sumOfAnswers = answerList.sumBy { it.answer }
+    val allOfAnswersTheSame = answerList.map { it.answer }.distinct().size == 1
     if (sumOfAnswers == getBadResult(
             AnswerType.TRADE_OFF,
             answerList.size
         ) || sumOfAnswers == answerList.size
+        || allOfAnswersTheSame
     ) {
         return FinalResult(
             text = "نتیجه آزمون اعتباری ندارد",

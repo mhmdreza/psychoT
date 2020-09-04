@@ -50,10 +50,13 @@ val fatherQuestions = motherQuestions
 
 fun getQuiz8Result(answerList: ArrayList<Answer>): FinalResult {
     val sumOfAnswers = answerList.sumBy { it.answer }
+    val allOfAnswersTheSame = answerList.map { it.answer }.distinct().size == 1
+
     if (sumOfAnswers == getBadResult(
             AnswerType.AGREEMENT_LEVEL_4,
             answerList.size
         ) || sumOfAnswers == answerList.size
+        || allOfAnswersTheSame
     ) {
         return FinalResult(
             text = "نتیجه آزمون اعتباری ندارد",
