@@ -18,6 +18,9 @@ class MainFragment : Fragment() {
 
     private val navController by lazy { Navigation.findNavController(view!!) }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -12,10 +12,10 @@ import android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import ir.nilva.azmoonyar.data.Quiz
 import ir.nilva.azmoonyar.data.SharedPref
 import ir.nilva.azmoonyar.util.IabHelper
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 
 open class MainActivity : AppCompatActivity() {
@@ -44,6 +44,9 @@ open class MainActivity : AppCompatActivity() {
             }
             mHelper!!.queryInventoryAsync(mGotInventoryListener)
         }
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase!!))
     }
 
     private val mGotInventoryListener =
@@ -99,10 +102,6 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
-    }
 
     private fun setLightStatusBar(view: View, activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
